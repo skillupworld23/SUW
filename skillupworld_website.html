@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillUp World — Built to Fit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+:root{
+  --bg:#07071A;
+  --bg2:#0D0D2B;
+  --bg3:#111133;
+  --card:rgba(255,255,255,0.04);
+  --card-border:rgba(139,92,246,0.18);
+  --purple:#7C3AED;
+  --purple-light:#A78BFA;
+  --purple-pale:#C4B5FD;
+  --indigo:#4F46E5;
+  --green:#0F6E56;
+  --green-light:#34D399;
+  --blue:#3B82F6;
+  --blue-light:#93C5FD;
+  --amber:#D97706;
+  --amber-light:#FCD34D;
+  --pink:#DB2777;
+  --pink-light:#F9A8D4;
+  --text:#F5F3FF;
+  --text2:rgba(232,228,255,0.65);
+  --text3:rgba(232,228,255,0.38);
+  --border:rgba(139,92,246,0.18);
+  --font-display:'Syne',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+  --radius:12px;
+  --radius-lg:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:15px;line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* ─── NOISE OVERLAY ─── */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
+
+/* ─── NAVBAR ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(7,7,26,0.9);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);transition:all .3s}
+.nav.scrolled{background:rgba(7,7,26,0.98)}
+.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer}
+.nav-logo-box{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--purple),var(--indigo));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:11px;font-weight:700;color:#fff;letter-spacing:0.5px}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.15}
+.nav-logo-skill{font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text)}
+.nav-logo-world{font-size:9px;color:var(--purple-light);letter-spacing:0.6px;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-link{font-size:13px;color:var(--text2);cursor:pointer;transition:color .2s;font-family:var(--font-body)}
+.nav-link:hover,.nav-link.active{color:var(--purple-light)}
+.nav-cta{background:linear-gradient(135deg,var(--purple),var(--indigo));color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-body);transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.nav-mobile-toggle{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer}
+
+/* ─── PAGES ─── */
+.page{display:none;min-height:100vh;padding-top:64px}
+.page.active{display:block}
+
+/* ─── HERO SECTION ─── */
+.hero{position:relative;padding:100px 40px 80px;text-align:center;overflow:hidden}
+.hero-glow{position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:700px;height:500px;background:radial-gradient(ellipse,rgba(124,58,237,0.22) 0%,transparent 65%);pointer-events:none}
+.hero-glow2{position:absolute;bottom:-50px;left:10%;width:300px;height:300px;background:radial-gradient(ellipse,rgba(79,70,229,0.1) 0%,transparent 70%);pointer-events:none}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(167,139,250,0.1);border:0.5px solid rgba(167,139,250,0.3);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--purple-pale);margin-bottom:24px;font-weight:500}
+.hero h1{font-family:var(--font-display);font-size:56px;font-weight:700;line-height:1.1;letter-spacing:-1.5px;color:var(--text);margin-bottom:20px}
+.hero h1 .grad{background:linear-gradient(135deg,#C4B5FD,#818CF8 40%,#34D399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:17px;color:var(--text2);max-width:560px;margin:0 auto 36px;line-height:1.75}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:64px}
+.btn-grad{background:linear-gradient(135deg,var(--purple),var(--indigo));color:#fff;border:none;padding:13px 28px;border-radius:10px;font-size:14px;font-weight:500;cursor:pointer;font-family:var(--font-body);transition:transform .2s,opacity .2s}
+.btn-grad:hover{transform:translateY(-1px);opacity:.9}
+.btn-ghost{background:rgba(255,255,255,0.05);color:var(--text);border:0.5px solid rgba(167,139,250,0.3);padding:13px 28px;border-radius:10px;font-size:14px;cursor:pointer;font-family:var(--font-body);transition:background .2s}
+.btn-ghost:hover{background:rgba(167,139,250,0.1)}
+.stats-strip{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;padding:32px 40px;border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);background:rgba(255,255,255,0.02)}
+.stat-item{text-align:center}
+.stat-num{font-family:var(--font-display);font-size:32px;font-weight:700;background:linear-gradient(135deg,var(--purple-pale),var(--purple-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-label{font-size:12px;color:var(--text3);margin-top:2px}
+
+/* ─── SECTION COMMONS ─── */
+.section{padding:80px 40px;position:relative}
+.section.alt{background:rgba(255,255,255,0.015)}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{display:inline-block;background:rgba(167,139,250,0.1);border:0.5px solid rgba(167,139,250,0.22);border-radius:20px;padding:4px 14px;font-size:11px;color:var(--purple-pale);margin-bottom:14px;letter-spacing:.07em;text-transform:uppercase;font-weight:500}
+.section-title{font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--text);letter-spacing:-0.5px;margin-bottom:10px;line-height:1.2}
+.section-title .grad{background:linear-gradient(135deg,var(--purple-pale),var(--purple-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-sub{font-size:15px;color:var(--text2);line-height:1.7;max-width:520px;margin-bottom:40px}
+.divider{height:0.5px;background:linear-gradient(90deg,transparent,rgba(139,92,246,0.3),transparent);margin:0 40px}
+
+/* ─── SERVICES GRID ─── */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.service-card{background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius-lg);padding:24px;cursor:pointer;transition:border-color .25s,transform .2s}
+.service-card:hover{border-color:rgba(139,92,246,0.45);transform:translateY(-2px)}
+.service-card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
+.service-card-title{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--text);margin-bottom:6px}
+.service-card-desc{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:14px}
+.service-tag{display:inline-block;font-size:10px;padding:3px 10px;border-radius:10px;font-weight:500}
+.service-items{margin-top:14px;border-top:0.5px solid var(--border);padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.service-item{font-size:12px;color:var(--text3);display:flex;align-items:center;gap:6px}
+.service-item i{font-size:12px;color:var(--purple-light)}
+
+/* ─── WHO WE SERVE ─── */
+.serve-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.serve-card{background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius);padding:20px;display:flex;gap:14px;align-items:flex-start;transition:border-color .2s}
+.serve-card:hover{border-color:rgba(139,92,246,0.4)}
+.serve-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.serve-title{font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.serve-desc{font-size:12px;color:var(--text2);line-height:1.6}
+
+/* ─── INDUSTRIES ─── */
+.industry-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+.industry-card{background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius);padding:16px;text-align:center;transition:border-color .2s}
+.industry-card:hover{border-color:rgba(139,92,246,0.4)}
+.industry-icon{font-size:24px;margin-bottom:8px;display:block}
+.industry-name{font-size:12px;font-weight:500;color:var(--text);margin-bottom:2px}
+.industry-sub{font-size:11px;color:var(--text3)}
+
+/* ─── PLATFORM CARDS ─── */
+.platform-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.platform-card{border-radius:var(--radius-lg);padding:32px;position:relative;overflow:hidden}
+.platform-card.market{background:linear-gradient(135deg,rgba(124,58,237,0.18),rgba(79,70,229,0.1));border:0.5px solid rgba(124,58,237,0.3)}
+.platform-card.bridge{background:linear-gradient(135deg,rgba(16,110,86,0.18),rgba(29,158,117,0.08));border:0.5px solid rgba(16,110,86,0.3)}
+.platform-icon{font-size:32px;margin-bottom:14px;display:block}
+.platform-title{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px}
+.platform-sub{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:20px}
+.platform-features{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.platform-feat{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2)}
+.platform-feat i{font-size:13px}
+.platform-cta{font-size:13px;font-weight:500;display:flex;align-items:center;gap:4px;cursor:pointer}
+.platform-cta.pur{color:var(--purple-light)}
+.platform-cta.grn{color:var(--green-light)}
+.soon-badge{display:inline-block;background:rgba(167,139,250,0.12);border:0.5px solid rgba(167,139,250,0.25);border-radius:20px;padding:3px 10px;font-size:10px;color:var(--purple-pale);margin-bottom:12px;font-weight:500;letter-spacing:.05em}
+
+/* ─── VISION 2030 ─── */
+.vision-hero{padding:80px 40px 48px;background:linear-gradient(180deg,rgba(124,58,237,0.12) 0%,transparent 100%);text-align:center}
+.vision-year-bg{font-family:var(--font-display);font-size:120px;font-weight:700;letter-spacing:-6px;color:rgba(124,58,237,0.08);line-height:1;margin-bottom:-40px;user-select:none}
+.vision-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:48px}
+.vtile{border-radius:var(--radius-lg);padding:28px;position:relative}
+.vtile.v1{background:linear-gradient(145deg,rgba(124,58,237,0.18),rgba(124,58,237,0.06));border:0.5px solid rgba(124,58,237,0.3)}
+.vtile.v2{background:linear-gradient(145deg,rgba(79,70,229,0.18),rgba(79,70,229,0.06));border:0.5px solid rgba(79,70,229,0.3)}
+.vtile.v3{background:linear-gradient(145deg,rgba(16,110,86,0.18),rgba(16,110,86,0.06));border:0.5px solid rgba(16,110,86,0.3)}
+.vtile-num{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px;opacity:.6}
+.v1 .vtile-num{color:var(--purple-pale)}
+.v2 .vtile-num{color:#A5B4FC}
+.v3 .vtile-num{color:var(--green-light)}
+.vtile-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}
+.v1 .vtile-icon{background:rgba(124,58,237,0.2)}
+.v2 .vtile-icon{background:rgba(79,70,229,0.2)}
+.v3 .vtile-icon{background:rgba(16,110,86,0.2)}
+.vtile-title{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--text);margin-bottom:10px;line-height:1.3}
+.vtile-desc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:18px}
+.vtile-goal{border-radius:10px;padding:14px}
+.v1 .vtile-goal{background:rgba(124,58,237,0.15);border:0.5px solid rgba(124,58,237,0.22)}
+.v2 .vtile-goal{background:rgba(79,70,229,0.15);border:0.5px solid rgba(79,70,229,0.22)}
+.v3 .vtile-goal{background:rgba(16,110,86,0.15);border:0.5px solid rgba(16,110,86,0.22)}
+.vtile-goal-label{font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.v1 .vtile-goal-label{color:var(--purple-pale)}
+.v2 .vtile-goal-label{color:#A5B4FC}
+.v3 .vtile-goal-label{color:var(--green-light)}
+.vtile-goal-num{font-family:var(--font-display);font-size:28px;font-weight:700;margin-bottom:3px}
+.v1 .vtile-goal-num{color:var(--purple-pale)}
+.v2 .vtile-goal-num{color:#A5B4FC}
+.v3 .vtile-goal-num{color:var(--green-light)}
+.vtile-goal-desc{font-size:11px;color:var(--text3);line-height:1.4}
+.vtile-milestones{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.vm{display:flex;align-items:flex-start;gap:8px}
+.vm-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.v1 .vm-dot{background:var(--purple-light)}
+.v2 .vm-dot{background:#818CF8}
+.v3 .vm-dot{background:var(--green-light)}
+.vm-text{font-size:12px;color:var(--text2);line-height:1.5}
+.vision-stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:32px}
+.vstat{background:rgba(255,255,255,0.03);border:0.5px solid var(--border);border-radius:var(--radius);padding:18px;text-align:center}
+.vstat-num{font-family:var(--font-display);font-size:28px;font-weight:700;background:linear-gradient(135deg,var(--purple-pale),var(--purple-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.vstat-label{font-size:11px;color:var(--text3);margin-top:3px;line-height:1.4}
+.founder-quote-box{background:rgba(124,58,237,0.1);border:0.5px solid rgba(124,58,237,0.25);border-radius:0 var(--radius-lg) var(--radius-lg) 0;padding:24px 28px;border-left:3px solid var(--purple)}
+.fq-text{font-size:15px;color:var(--text2);line-height:1.85;font-style:italic;margin-bottom:12px}
+.fq-name{font-size:13px;color:var(--purple-light);font-weight:500}
+
+/* ─── ABOUT ─── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about-img-box{background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(79,70,229,0.08));border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:40px;text-align:center}
+.about-initials{font-family:var(--font-display);font-size:72px;font-weight:700;background:linear-gradient(135deg,var(--purple-pale),var(--purple-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.about-name{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--text);margin-top:12px}
+.about-title{font-size:13px;color:var(--text2);margin-top:4px}
+.about-certs{display:flex;gap:6px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.cert-pill{background:rgba(167,139,250,0.12);border:0.5px solid rgba(167,139,250,0.25);border-radius:20px;padding:4px 12px;font-size:11px;color:var(--purple-pale);font-weight:500}
+.about-story{font-size:14px;color:var(--text2);line-height:1.85}
+.about-story p{margin-bottom:16px}
+.about-story p:last-child{margin-bottom:0}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+.value-card{background:var(--card);border:0.5px solid var(--border);border-radius:var(--radius);padding:14px}
+.value-title{font-size:13px;font-weight:500;color:var(--purple-light);margin-bottom:4px}
+.value-desc{font-size:12px;color:var(--text3);line-height:1.5}
+
+/* ─── INSIGHTS ─── */
+.insights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.insight-card{background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius-lg);overflow:hidden;cursor:pointer;transition:border-color .2s,transform .2s}
+.insight-card:hover{border-color:rgba(139,92,246,0.4);transform:translateY(-2px)}
+.insight-tag-bar{padding:16px 20px 0}
+.insight-type{font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--purple-light)}
+.insight-body{padding:14px 20px 20px}
+.insight-title{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px;line-height:1.3}
+.insight-excerpt{font-size:12px;color:var(--text2);line-height:1.65;margin-bottom:14px}
+.insight-meta{display:flex;align-items:center;justify-content:space-between}
+.insight-date{font-size:11px;color:var(--text3)}
+.insight-read{font-size:12px;color:var(--purple-light);font-weight:500}
+
+/* ─── CONTACT / ASSESSMENT ─── */
+.contact-grid{display:grid;grid-template-columns:1fr 1.5fr;gap:48px;align-items:start}
+.contact-info{position:sticky;top:90px}
+.contact-info-title{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--text);margin-bottom:12px;line-height:1.2}
+.contact-info-sub{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:28px}
+.contact-detail{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.contact-icon{width:36px;height:36px;border-radius:9px;background:rgba(124,58,237,0.15);border:0.5px solid rgba(124,58,237,0.25);display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--purple-light);flex-shrink:0}
+.contact-detail-text{font-size:13px;color:var(--text2)}
+.contact-detail-val{font-size:14px;color:var(--text);font-weight:500}
+.form-card{background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius-lg);padding:32px}
+.form-title{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text);margin-bottom:6px}
+.form-sub{font-size:13px;color:var(--text2);margin-bottom:24px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{margin-bottom:18px}
+.form-group.full{grid-column:1/-1}
+label{display:block;font-size:12px;font-weight:500;color:var(--text2);margin-bottom:7px;letter-spacing:.03em}
+input,select,textarea{width:100%;background:rgba(255,255,255,0.05);border:0.5px solid rgba(139,92,246,0.25);border-radius:8px;padding:11px 14px;font-size:14px;color:var(--text);font-family:var(--font-body);outline:none;transition:border-color .2s}
+input::placeholder,textarea::placeholder{color:var(--text3)}
+input:focus,select:focus,textarea:focus{border-color:rgba(139,92,246,0.55);background:rgba(124,58,237,0.08)}
+select option{background:#1a1a3e;color:var(--text)}
+textarea{resize:vertical;min-height:110px}
+.form-submit{width:100%;background:linear-gradient(135deg,var(--purple),var(--indigo));color:#fff;border:none;padding:14px;border-radius:10px;font-size:15px;font-weight:500;cursor:pointer;font-family:var(--font-body);transition:opacity .2s,transform .2s;margin-top:4px}
+.form-submit:hover{opacity:.88;transform:translateY(-1px)}
+.form-success{background:rgba(16,110,86,0.15);border:0.5px solid rgba(16,110,86,0.3);border-radius:10px;padding:20px;text-align:center;display:none}
+.form-success i{font-size:32px;color:var(--green-light);margin-bottom:8px;display:block}
+.form-success-title{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--text);margin-bottom:4px}
+.form-success-sub{font-size:13px;color:var(--text2)}
+
+/* ─── CTA SECTION ─── */
+.cta-box{background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(79,70,229,0.15));border:0.5px solid rgba(124,58,237,0.28);border-radius:var(--radius-lg);padding:56px 40px;text-align:center}
+.cta-title{font-family:var(--font-display);font-size:34px;font-weight:700;color:var(--text);margin-bottom:12px;letter-spacing:-.5px}
+.cta-sub{font-size:15px;color:var(--text2);margin-bottom:28px;line-height:1.7}
+
+/* ─── FOOTER ─── */
+footer{background:rgba(5,5,15,0.97);border-top:0.5px solid rgba(124,58,237,0.18);padding:48px 40px 24px}
+.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:40px;margin-bottom:40px}
+.footer-brand-skill{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--text)}
+.footer-brand-world{font-size:10px;color:var(--purple-light);letter-spacing:.6px;text-transform:uppercase;display:block;margin-top:-2px;margin-bottom:8px}
+.footer-tagline{font-size:12px;color:var(--text3);line-height:1.6;margin-bottom:14px}
+.footer-certs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.footer-cert{background:rgba(167,139,250,0.1);border:0.5px solid rgba(167,139,250,0.2);border-radius:6px;padding:3px 9px;font-size:10px;color:var(--purple-pale);font-weight:500}
+.footer-socials{display:flex;gap:8px}
+.social-btn{width:30px;height:30px;border-radius:8px;background:rgba(167,139,250,0.08);border:0.5px solid rgba(167,139,250,0.18);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--purple-light);cursor:pointer;transition:background .2s}
+.social-btn:hover{background:rgba(167,139,250,0.18)}
+.footer-col-title{font-family:var(--font-display);font-size:12px;font-weight:600;color:var(--text);margin-bottom:14px;letter-spacing:.06em;text-transform:uppercase}
+.footer-link{font-size:13px;color:var(--text3);display:block;margin-bottom:9px;cursor:pointer;transition:color .2s}
+.footer-link:hover{color:var(--purple-light)}
+.footer-bottom{border-top:0.5px solid rgba(167,139,250,0.1);padding-top:18px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-copy{font-size:12px;color:var(--text3)}
+.footer-legal{display:flex;gap:18px}
+.footer-legal a{font-size:12px;color:var(--text3);transition:color .2s}
+.footer-legal a:hover{color:var(--purple-light)}
+
+/* ─── SUCCESS / TOAST ─── */
+.toast{position:fixed;bottom:28px;right:28px;background:rgba(16,110,86,0.95);border:0.5px solid rgba(52,211,153,0.4);border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:10px;font-size:14px;color:#fff;z-index:9999;transform:translateY(80px);opacity:0;transition:all .35s;pointer-events:none}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .nav-links{display:none}
+  .nav-mobile-toggle{display:block}
+  .about-grid,.contact-grid,.platform-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:38px}
+  .section-title{font-size:28px}
+  .form-row{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .nav{padding:0 20px}
+  .hero{padding:60px 20px 60px}
+  .section{padding:56px 20px}
+  footer{padding:40px 20px 20px}
+  .stats-strip{gap:24px;padding:24px 20px}
+  .footer-grid{grid-template-columns:1fr}
+}
+
+/* ─── MOBILE MENU ─── */
+.mobile-menu{position:fixed;top:64px;left:0;right:0;background:rgba(7,7,26,0.98);border-bottom:0.5px solid var(--border);padding:20px;z-index:999;display:none;flex-direction:column;gap:4px}
+.mobile-menu.open{display:flex}
+.mobile-nav-link{font-size:15px;color:var(--text2);padding:12px 0;border-bottom:0.5px solid rgba(255,255,255,0.05);cursor:pointer}
+.mobile-nav-link:hover{color:var(--purple-light)}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.page.active .hero>*{animation:fadeUp .5s ease both}
+.page.active .hero>*:nth-child(2){animation-delay:.1s}
+.page.active .hero>*:nth-child(3){animation-delay:.2s}
+.page.active .hero>*:nth-child(4){animation-delay:.3s}
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><i class="ti ti-check"></i><span id="toast-msg">Message sent successfully!</span></div>
+
+<!-- NAVBAR -->
+<nav class="nav" id="navbar">
+  <div class="nav-logo" onclick="showPage('home')">
+    <div class="nav-logo-box">SUW</div>
+    <div class="nav-logo-text">
+      <span class="nav-logo-skill">SkillUp</span>
+      <span class="nav-logo-world">World</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <span class="nav-link" onclick="showPage('whatwedo')">What We Do</span>
+    <span class="nav-link" onclick="showPage('whowserve')">Who We Serve</span>
+    <span class="nav-link" onclick="showPage('products')">Our Products</span>
+    <span class="nav-link" onclick="showPage('vision')">2030 Vision</span>
+    <span class="nav-link" onclick="showPage('about')">About</span>
+    <span class="nav-link" onclick="showPage('insights')">Insights</span>
+    <span class="nav-link" onclick="showPage('contact')">Contact</span>
+  </div>
+  <button class="nav-cta" onclick="showPage('contact')">Apply for Assessment →</button>
+  <button class="nav-mobile-toggle" onclick="toggleMenu()"><i class="ti ti-menu-2"></i></button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-nav-link" onclick="showPage('whatwedo');toggleMenu()">What We Do</span>
+  <span class="mobile-nav-link" onclick="showPage('whowserve');toggleMenu()">Who We Serve</span>
+  <span class="mobile-nav-link" onclick="showPage('products');toggleMenu()">Our Products</span>
+  <span class="mobile-nav-link" onclick="showPage('vision');toggleMenu()">2030 Vision</span>
+  <span class="mobile-nav-link" onclick="showPage('about');toggleMenu()">About</span>
+  <span class="mobile-nav-link" onclick="showPage('insights');toggleMenu()">Insights</span>
+  <span class="mobile-nav-link" onclick="showPage('contact');toggleMenu()">Contact</span>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: HOME
+═══════════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="badge"><i class="ti ti-sparkles"></i> AI-Enabled Digital Transformation</div>
+    <h1>Not Just Advice.<br><span class="grad">Built to Fit.</span></h1>
+    <p class="hero-sub">We sit on your side of the table. SkillUp World diagnoses first, then transforms — helping organizations, professionals, and students thrive in a digital world.</p>
+    <div class="hero-btns">
+      <button class="btn-grad" onclick="showPage('contact')">Apply for Strategic Assessment →</button>
+      <button class="btn-ghost" onclick="showPage('whatwedo')">Explore What We Do</button>
+    </div>
+  </div>
+
+  <div class="stats-strip">
+    <div class="stat-item"><div class="stat-num">13+</div><div class="stat-label">Years global experience</div></div>
+    <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">Countries delivered</div></div>
+    <div class="stat-item"><div class="stat-num">10+</div><div class="stat-label">Industries served</div></div>
+    <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Platform products</div></div>
+  </div>
+
+  <!-- SERVICES PREVIEW -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-tag">What we do</div>
+      <div class="section-title">Everything your organization needs<br>to <span class="grad">transform & grow</span></div>
+      <div class="section-sub">From AI readiness to agile delivery, capability building to software development — all built to fit your exact context.</div>
+      <div class="services-grid">
+        <div class="service-card" onclick="showPage('whatwedo')">
+          <div class="service-card-icon" style="background:rgba(167,139,250,0.15)"><i class="ti ti-brain" style="color:#C4B5FD"></i></div>
+          <div class="service-card-title">AI Enablement</div>
+          <div class="service-card-desc">AI thinking, mindset & readiness programs for teams and organizations entering the AI era.</div>
+          <span class="service-tag" style="background:rgba(167,139,250,0.1);color:#C4B5FD">Trending 2026</span>
+        </div>
+        <div class="service-card" onclick="showPage('whatwedo')">
+          <div class="service-card-icon" style="background:rgba(129,140,248,0.15)"><i class="ti ti-search" style="color:#A5B4FC"></i></div>
+          <div class="service-card-title">Digital Advisory & Diagnostics</div>
+          <div class="service-card-desc">We are your voice. We diagnose before prescribing — sitting on your side, not the vendor's.</div>
+          <span class="service-tag" style="background:rgba(129,140,248,0.1);color:#A5B4FC">Our USP</span>
+        </div>
+        <div class="service-card" onclick="showPage('whatwedo')">
+          <div class="service-card-icon" style="background:rgba(52,211,153,0.15)"><i class="ti ti-refresh" style="color:#6EE7B7"></i></div>
+          <div class="service-card-title">Digital Transformation</div>
+          <div class="service-card-desc">Agile, CX, process & business model transformation grounded in 13+ years of enterprise delivery.</div>
+          <span class="service-tag" style="background:rgba(52,211,153,0.1);color:#6EE7B7">Core</span>
+        </div>
+        <div class="service-card" onclick="showPage('whatwedo')">
+          <div class="service-card-icon" style="background:rgba(96,165,250,0.15)"><i class="ti ti-code" style="color:#93C5FD"></i></div>
+          <div class="service-card-title">Software Development</div>
+          <div class="service-card-desc">Web, mobile (Android + iOS) & custom software built to solve the right problem, not just any problem.</div>
+          <span class="service-tag" style="background:rgba(96,165,250,0.1);color:#93C5FD">Build</span>
+        </div>
+        <div class="service-card" onclick="showPage('whatwedo')">
+          <div class="service-card-icon" style="background:rgba(251,191,36,0.15)"><i class="ti ti-award" style="color:#FCD34D"></i></div>
+          <div class="service-card-title">Capability Building</div>
+          <div class="service-card-desc">Leadership, agile training & digital upskilling programs that change how your people work.</div>
+          <span class="service-tag" style="background:rgba(251,191,36,0.1);color:#FCD34D">People</span>
+        </div>
+        <div class="service-card" onclick="showPage('whatwedo')">
+          <div class="service-card-icon" style="background:rgba(244,114,182,0.15)"><i class="ti ti-rocket" style="color:#F9A8D4"></i></div>
+          <div class="service-card-title">Career Development</div>
+          <div class="service-card-desc">End-to-end career journeys — from self-awareness to market readiness to continuous professional growth.</div>
+          <span class="service-tag" style="background:rgba(244,114,182,0.1);color:#F9A8D4">Growth</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PLATFORMS PREVIEW -->
+  <div class="section alt">
+    <div class="section-inner">
+      <div class="section-tag">Our products</div>
+      <div class="section-title">Two platforms. <span class="grad">Infinite impact.</span></div>
+      <div class="section-sub">Beyond consulting — ecosystems that connect technology, talent, and opportunity.</div>
+      <div class="platform-grid">
+        <div class="platform-card market">
+          <span class="soon-badge">Launching Soon</span>
+          <i class="ti ti-certificate platform-icon" style="color:#A78BFA"></i>
+          <div class="platform-title">Verified Technology Marketplace</div>
+          <div class="platform-sub">Community-powered, expert-validated platform. Every solution independently evaluated — no vendor bias, just truth.</div>
+          <div class="platform-cta pur" onclick="showPage('products')">Learn more <i class="ti ti-arrow-right"></i></div>
+        </div>
+        <div class="platform-card bridge">
+          <span class="soon-badge" style="background:rgba(52,211,153,0.1);border-color:rgba(52,211,153,0.2);color:#6EE7B7">Launching Soon</span>
+          <i class="ti ti-building-bridge platform-icon" style="color:#34D399"></i>
+          <div class="platform-title">BridgeWork Platform</div>
+          <div class="platform-sub">Where industry problems meet student minds. Real final year projects. Real organizations. Real impact before graduation.</div>
+          <div class="platform-cta grn" onclick="showPage('products')">Learn more <i class="ti ti-arrow-right"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CTA -->
+  <div class="section">
+    <div class="section-inner">
+      <div class="cta-box">
+        <div class="badge" style="margin-bottom:18px">Built to Fit — Not Off the Shelf</div>
+        <div class="cta-title">Ready to transform<br><span class="grad">your organization?</span></div>
+        <p class="cta-sub">Apply for a Strategic Assessment and let us understand your world before we recommend anything. No generic advice. No vendor bias. Just the truth.</p>
+        <button class="btn-grad" style="font-size:15px;padding:14px 32px" onclick="showPage('contact')">Apply for Strategic Assessment →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <!-- FOOTER -->
+  <div id="footer-home"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: WHAT WE DO
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-whatwedo">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-tag">What we do</div>
+      <div class="section-title">Services <span class="grad">Built to Fit</span><br>your exact context</div>
+      <div class="section-sub">Every engagement starts with understanding your world. We never prescribe before we diagnose.</div>
+
+      <!-- AI ENABLEMENT -->
+      <div style="margin-bottom:48px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(167,139,250,0.15);display:flex;align-items:center;justify-content:center;font-size:20px"><i class="ti ti-brain" style="color:#C4B5FD"></i></div>
+          <div>
+            <div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text)">1. AI Enablement</div>
+            <div style="font-size:13px;color:var(--text2)">Helping individuals & organizations think, prepare, and act with AI</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
+          <div class="service-card">
+            <div class="service-card-title">AI Thinking & Mindset</div>
+            <div class="service-card-desc">Building mental models for an AI-driven world</div>
+            <div class="service-items">
+              <div class="service-item"><i class="ti ti-chevron-right"></i> AI for non-tech professionals</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Prompt engineering basics</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Ethics & responsible AI</div>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-card-title">AI Readiness</div>
+            <div class="service-card-desc">Assessing where you stand and building a clear path forward</div>
+            <div class="service-items">
+              <div class="service-item"><i class="ti ti-chevron-right"></i> AI maturity assessment</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> AI adoption roadmap</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Use case identification</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> AI governance framework</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider" style="margin:0 0 48px"></div>
+
+      <!-- ENTERPRISE SERVICES -->
+      <div style="margin-bottom:48px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(129,140,248,0.15);display:flex;align-items:center;justify-content:center;font-size:20px"><i class="ti ti-building-skyscraper" style="color:#A5B4FC"></i></div>
+          <div>
+            <div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text)">2. Enterprise Services</div>
+            <div style="font-size:13px;color:var(--text2)">End-to-end advisory, transformation, and technology services</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
+          <div class="service-card">
+            <div class="service-card-title">Digital Advisory & Diagnostics</div>
+            <div class="service-card-desc">We sit on your side of the table — your voice in the digital world</div>
+            <div class="service-items">
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Business process discovery</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Needs assessment & problem definition</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Digital maturity assessment</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Vendor & technology evaluation</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Digital investment roadmap</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> ROI measurement & KPIs</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Voice of the client</div>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-card-title">Digital Transformation</div>
+            <div class="service-card-desc">Transforming how organizations operate and compete</div>
+            <div class="service-items">
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Agile transformation consulting</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Scrum, Kanban & SAFe</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> People & culture change</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Process automation & RPA</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> CX transformation</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Business model innovation</div>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-card-title">Software Development</div>
+            <div class="service-card-desc">Building reliable, scalable digital products</div>
+            <div class="service-items">
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Web development</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Mobile — Android + iOS</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Custom software development</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> SaaS partner products (soon)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider" style="margin:0 0 48px"></div>
+
+      <!-- TALENT DEVELOPMENT -->
+      <div style="margin-bottom:48px">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+          <div style="width:40px;height:40px;border-radius:10px;background:rgba(52,211,153,0.15);display:flex;align-items:center;justify-content:center;font-size:20px"><i class="ti ti-award" style="color:#6EE7B7"></i></div>
+          <div>
+            <div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text)">3. Talent Development</div>
+            <div style="font-size:13px;color:var(--text2)">Developing future-ready people through strategic learning & partnerships</div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
+          <div class="service-card">
+            <div class="service-card-title">Capability Building</div>
+            <div class="service-card-desc">Upskilling your workforce with capabilities that drive real performance</div>
+            <div class="service-items">
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Leadership development</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Agile training & certification</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> AI thinking for teams</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Emotional intelligence (EQ)</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Communication & influence</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Productivity & well-being</div>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-card-title">Academic Partnership</div>
+            <div class="service-card-desc">Bridging education and the real world of work</div>
+            <div class="service-items">
+              <div class="service-item"><i class="ti ti-chevron-right"></i> University collaborations</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Curriculum co-design</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Early talent programs</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> BridgeWork Platform</div>
+            </div>
+          </div>
+          <div class="service-card">
+            <div class="service-card-title">Career Development</div>
+            <div class="service-card-desc">A complete journey from self-awareness to continuous professional growth</div>
+            <div class="service-items">
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Career coaching & mentoring</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Job-readiness bootcamps</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Reskilling & career pivoting</div>
+              <div class="service-item"><i class="ti ti-chevron-right"></i> Career Development Program</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-box">
+        <div class="cta-title" style="font-size:26px">Not sure which service fits?</div>
+        <p class="cta-sub">That's exactly what our Strategic Assessment is for. Let us understand your world first.</p>
+        <button class="btn-grad" onclick="showPage('contact')">Apply for Strategic Assessment →</button>
+      </div>
+    </div>
+  </div>
+  <div id="footer-whatwedo"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: WHO WE SERVE
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-whowserve">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-tag">Who we serve</div>
+      <div class="section-title"><span class="grad">Built to fit</span> every stakeholder</div>
+      <div class="section-sub">From global enterprises to final year students — we serve anyone serious about digital growth and meaningful opportunity.</div>
+      <div class="serve-grid">
+        <div class="serve-card">
+          <div class="serve-icon" style="background:rgba(167,139,250,0.15)"><i class="ti ti-building-skyscraper" style="color:#C4B5FD"></i></div>
+          <div>
+            <div class="serve-title">Large Enterprises & Corporates</div>
+            <div class="serve-desc">Navigating complex, large-scale digital transformation across industries like Healthcare, Fintech, Textile, Airlines, and Public Sector.</div>
+          </div>
+        </div>
+        <div class="serve-card">
+          <div class="serve-icon" style="background:rgba(129,140,248,0.15)"><i class="ti ti-trending-up" style="color:#A5B4FC"></i></div>
+          <div>
+            <div class="serve-title">SMEs & Growing Businesses</div>
+            <div class="serve-desc">Companies scaling fast but without internal digital expertise. We become your trusted digital voice before you spend a single dollar on technology.</div>
+          </div>
+        </div>
+        <div class="serve-card">
+          <div class="serve-icon" style="background:rgba(52,211,153,0.15)"><i class="ti ti-device-desktop" style="color:#6EE7B7"></i></div>
+          <div>
+            <div class="serve-title">Technology Vendors & Product Companies</div>
+            <div class="serve-desc">IT product companies and SaaS providers seeking independent validation and market reach through our Verified Technology Marketplace.</div>
+          </div>
+        </div>
+        <div class="serve-card">
+          <div class="serve-icon" style="background:rgba(96,165,250,0.15)"><i class="ti ti-school" style="color:#93C5FD"></i></div>
+          <div>
+            <div class="serve-title">Universities & Academic Institutions</div>
+            <div class="serve-desc">Educational institutions closing the industry-academia gap through curriculum co-design and the BridgeWork Platform.</div>
+          </div>
+        </div>
+        <div class="serve-card">
+          <div class="serve-icon" style="background:rgba(251,191,36,0.15)"><i class="ti ti-user-graduate" style="color:#FCD34D"></i></div>
+          <div>
+            <div class="serve-title">Final Year Students</div>
+            <div class="serve-desc">Students who want real industry experience before graduating — solving actual business problems as their final year project through BridgeWork.</div>
+          </div>
+        </div>
+        <div class="serve-card">
+          <div class="serve-icon" style="background:rgba(244,114,182,0.15)"><i class="ti ti-users" style="color:#F9A8D4"></i></div>
+          <div>
+            <div class="serve-title">Professionals & Career Changers</div>
+            <div class="serve-desc">Mid-career professionals who need to upskill, reskill, or pivot — with structured paths, coaching, and industry-recognized certifications.</div>
+          </div>
+        </div>
+        <div class="serve-card">
+          <div class="serve-icon" style="background:rgba(251,191,36,0.15)"><i class="ti ti-building" style="color:#FCD34D"></i></div>
+          <div>
+            <div class="serve-title">Government & Public Sector</div>
+            <div class="serve-desc">Government ministries and public institutions modernizing service delivery through digital advisory, process transformation, and agile adoption.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INDUSTRIES -->
+      <div style="margin-top:56px">
+        <div class="section-tag">Industries we serve</div>
+        <div class="section-title" style="font-size:28px">Deep domain experience across <span class="grad">sectors that are transforming</span></div>
+        <div style="height:20px"></div>
+        <div class="industry-grid">
+          <div class="industry-card"><span class="industry-icon">🏥</span><div class="industry-name">Healthcare & VBC</div><div class="industry-sub">Digital health, care coordination</div></div>
+          <div class="industry-card"><span class="industry-icon">💳</span><div class="industry-name">Fintech & Banking</div><div class="industry-sub">CRM, digital payments, ERP</div></div>
+          <div class="industry-card"><span class="industry-icon">🧵</span><div class="industry-name">Textile & ESG</div><div class="industry-sub">Traceability, supply chain</div></div>
+          <div class="industry-card"><span class="industry-icon">✈️</span><div class="industry-name">Airlines & Travel</div><div class="industry-sub">Booking, GDS/NDC, agile</div></div>
+          <div class="industry-card"><span class="industry-icon">🎓</span><div class="industry-name">Education & EdTech</div><div class="industry-sub">ERP, LMS, industry bridge</div></div>
+          <div class="industry-card"><span class="industry-icon">🏛️</span><div class="industry-name">Public Sector</div><div class="industry-sub">Health insurance, govt CRM</div></div>
+        </div>
+      </div>
+
+      <div style="margin-top:48px">
+        <div class="cta-box">
+          <div class="cta-title" style="font-size:26px">We work where you work</div>
+          <p class="cta-sub">Remote or on-site. Pakistan, Middle East, UK, USA — wherever your transformation needs to happen.</p>
+          <button class="btn-grad" onclick="showPage('contact')">Start the Conversation →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer-whowserve"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: OUR PRODUCTS
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-products">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-tag">Our products</div>
+      <div class="section-title">Two platforms.<br><span class="grad">One ecosystem.</span></div>
+      <div class="section-sub">Beyond consulting — we're building the infrastructure that connects technology, talent, and opportunity at scale.</div>
+
+      <!-- MARKETPLACE -->
+      <div style="background:linear-gradient(135deg,rgba(124,58,237,0.15),rgba(79,70,229,0.08));border:0.5px solid rgba(124,58,237,0.28);border-radius:var(--radius-lg);padding:36px;margin-bottom:20px">
+        <span class="soon-badge">Launching Soon — Register Interest</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start">
+          <div>
+            <i class="ti ti-certificate" style="font-size:36px;color:#A78BFA;margin-bottom:14px;display:block"></i>
+            <div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--text);margin-bottom:10px">Verified Technology Marketplace</div>
+            <p style="font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:20px">A community-powered, expert-validated platform where technology products earn their place through merit — not marketing budgets. Every solution listed has been independently evaluated by our expert panel and validated by a community of real practitioners.</p>
+            <button class="btn-grad" onclick="showPage('contact')">Register Interest →</button>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--purple-pale);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;font-size:11px">How it works</div>
+            <div class="platform-feat"><i class="ti ti-check" style="color:#A78BFA"></i><span style="font-size:13px;color:var(--text2)">Vendor applies with product details & case studies</span></div>
+            <div class="platform-feat"><i class="ti ti-check" style="color:#A78BFA"></i><span style="font-size:13px;color:var(--text2)">Expert panel evaluates across 5 dimensions</span></div>
+            <div class="platform-feat"><i class="ti ti-check" style="color:#A78BFA"></i><span style="font-size:13px;color:var(--text2)">Community of practitioners validates with real reviews</span></div>
+            <div class="platform-feat"><i class="ti ti-check" style="color:#A78BFA"></i><span style="font-size:13px;color:var(--text2)">SkillUp World Verified Badge awarded</span></div>
+            <div class="platform-feat"><i class="ti ti-check" style="color:#A78BFA"></i><span style="font-size:13px;color:var(--text2)">Clients matched to verified solutions via Advisory</span></div>
+            <div class="platform-feat"><i class="ti ti-check" style="color:#A78BFA"></i><span style="font-size:13px;color:var(--text2)">Periodic re-evaluation to maintain standards</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BRIDGEWORK -->
+      <div style="background:linear-gradient(135deg,rgba(16,110,86,0.15),rgba(29,158,117,0.06));border:0.5px solid rgba(16,110,86,0.28);border-radius:var(--radius-lg);padding:36px;margin-bottom:40px">
+        <span class="soon-badge" style="background:rgba(52,211,153,0.1);border-color:rgba(52,211,153,0.2);color:#6EE7B7">Launching Soon — Register Interest</span>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start">
+          <div>
+            <i class="ti ti-building-bridge" style="font-size:36px;color:#34D399;margin-bottom:14px;display:block"></i>
+            <div style="font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--text);margin-bottom:10px">BridgeWork Platform</div>
+            <p style="font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:20px">A structured industry-academia problem exchange — where organizations post real business challenges and final year students apply to solve them. Students gain verified industry experience before graduation. Organizations get fresh thinking on real problems. Everyone wins.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn-grad" style="background:linear-gradient(135deg,#0F6E56,#1D9E75)" onclick="showPage('contact')">Register as Industry →</button>
+              <button class="btn-ghost" onclick="showPage('contact')">Register as Student →</button>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="font-family:var(--font-display);font-size:11px;font-weight:600;color:#6EE7B7;margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em">The 6-step journey</div>
+            <div class="platform-feat"><i class="ti ti-circle-number-1" style="color:#34D399"></i><span style="font-size:13px;color:var(--text2)">Industry posts real business problem</span></div>
+            <div class="platform-feat"><i class="ti ti-circle-number-2" style="color:#34D399"></i><span style="font-size:13px;color:var(--text2)">SkillUp World reviews & categorizes it</span></div>
+            <div class="platform-feat"><i class="ti ti-circle-number-3" style="color:#34D399"></i><span style="font-size:13px;color:var(--text2)">Students browse & apply to solve it</span></div>
+            <div class="platform-feat"><i class="ti ti-circle-number-4" style="color:#34D399"></i><span style="font-size:13px;color:var(--text2)">University approves as Final Year Project</span></div>
+            <div class="platform-feat"><i class="ti ti-circle-number-5" style="color:#34D399"></i><span style="font-size:13px;color:var(--text2)">Student works with industry mentor + supervisor</span></div>
+            <div class="platform-feat"><i class="ti ti-circle-number-6" style="color:#34D399"></i><span style="font-size:13px;color:var(--text2)">Solution showcased — Industry-Ready certificate issued</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta-box">
+        <div class="cta-title" style="font-size:26px">Be part of something bigger</div>
+        <p class="cta-sub">Register your interest as a vendor, student, university, or industry partner — and be first to access our platforms when they launch.</p>
+        <button class="btn-grad" onclick="showPage('contact')">Register Interest →</button>
+      </div>
+    </div>
+  </div>
+  <div id="footer-products"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: 2030 VISION
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-vision">
+  <div class="vision-hero">
+    <div class="vision-year-bg">2030</div>
+    <div class="section-tag">Our north star</div>
+    <div class="section-title" style="font-size:40px;margin-bottom:14px">Where we are going.<br><span class="grad">Why it matters.</span></div>
+    <p style="font-size:16px;color:var(--text2);max-width:580px;margin:0 auto 56px;line-height:1.75">SkillUp World was born from a belief that knowledge and opportunity should not be privileges. We are committed to making that belief a measurable, global reality.</p>
+  </div>
+
+  <div class="section" style="padding-top:0">
+    <div class="section-inner">
+      <div class="vision-tiles">
+        <div class="vtile v1">
+          <div class="vtile-num">01 / 03</div>
+          <div class="vtile-icon"><i class="ti ti-target" style="color:#C4B5FD"></i></div>
+          <div class="vtile-title">Democratizing knowledge for everyone</div>
+          <div class="vtile-desc">World-class digital knowledge should be accessible regardless of where you start, what you earn, or where you live. We are closing that gap — one learner at a time.</div>
+          <div class="vtile-goal">
+            <div class="vtile-goal-label">Target</div>
+            <div class="vtile-goal-num">1M+</div>
+            <div class="vtile-goal-desc">People empowered with knowledge & opportunity</div>
+          </div>
+          <div class="vtile-milestones">
+            <div class="vm"><div class="vm-dot"></div><div class="vm-text">Free & accessible AI literacy programs for underserved communities</div></div>
+            <div class="vm"><div class="vm-dot"></div><div class="vm-text">Scholarships & subsidized programs for students from low-income backgrounds</div></div>
+            <div class="vm"><div class="vm-dot"></div><div class="vm-text">Regional language content for Pakistan & South Asia</div></div>
+          </div>
+        </div>
+
+        <div class="vtile v2">
+          <div class="vtile-num">02 / 03</div>
+          <div class="vtile-icon"><i class="ti ti-building-bridge" style="color:#A5B4FC"></i></div>
+          <div class="vtile-title">The most trusted digital transformation ecosystem</div>
+          <div class="vtile-desc">Three globally trusted platforms — connecting organizations to verified technology, students to real industry experience, and professionals to meaningful careers.</div>
+          <div class="vtile-goal">
+            <div class="vtile-goal-label">Target</div>
+            <div class="vtile-goal-num">10+</div>
+            <div class="vtile-goal-desc">Countries with active platform users & partners</div>
+          </div>
+          <div class="vtile-milestones">
+            <div class="vm"><div class="vm-dot"></div><div class="vm-text">Verified Marketplace — 500+ evaluated & listed products globally</div></div>
+            <div class="vm"><div class="vm-dot"></div><div class="vm-text">BridgeWork — 100+ university partners, 10,000+ students in real projects</div></div>
+            <div class="vm"><div class="vm-dot"></div><div class="vm-text">Career platform connecting graduates to transformation-ready organizations</div></div>
+          </div>
+        </div>
+
+        <div class="vtile v3">
+          <div class="vtile-num">03 / 03</div>
+          <div class="vtile-icon"><i class="ti ti-heart" style="color:#6EE7B7"></i></div>
+          <div class="vtile-title">Closing the gap between potential and opportunity</div>
+          <div class="vtile-desc">No student's final year project should be fictional. No organization should be misled by a vendor. No professional should be held back by lack of access to knowledge.</div>
+          <div class="vtile-goal">
+            <div class="vtile-goal-label">Target</div>
+            <div class="vtile-goal-num">Zero</div>
+            <div class="vtile-goal-desc">Gap between knowledge, access & opportunity</div>
+          </div>
+          <div class="vtile-milestones">
+            <div class="vm"><div class="vm-dot"></div><div class="vm-text">Every BridgeWork student graduates with verified industry experience</div></div>
+            <div class="vm"><div class="vm-dot"></div><div class="vm-text">Every organization advised makes better, bias-free tech decisions</div></div>
+            <div class="vm"><div class="vm-dot"></div><div class="vm-text">A generation that starts further ahead than the one before</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vision-stats-bar">
+        <div class="vstat"><div class="vstat-num">1M+</div><div class="vstat-label">People empowered</div></div>
+        <div class="vstat"><div class="vstat-num">10+</div><div class="vstat-label">Countries reached</div></div>
+        <div class="vstat"><div class="vstat-num">100+</div><div class="vstat-label">University partners</div></div>
+        <div class="vstat"><div class="vstat-num">500+</div><div class="vstat-label">Verified tech products</div></div>
+        <div class="vstat"><div class="vstat-num">3</div><div class="vstat-label">Global platforms</div></div>
+      </div>
+
+      <div class="founder-quote-box">
+        <div class="fq-text">"Someone became a wasela for me. My mother, with no education of her own, believed before the world did. Now I want to be that wasela for someone else. SkillUp World is not just a company — it is a promise. A promise that where you start will never determine where you go."</div>
+        <div class="fq-name">— Anila Liaqat, Founder, SkillUp World</div>
+      </div>
+    </div>
+  </div>
+  <div id="footer-vision"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: ABOUT
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-about">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-tag">About us</div>
+      <div class="section-title">Built from <span class="grad">lived experience</span></div>
+      <div style="height:32px"></div>
+      <div class="about-grid">
+        <div>
+          <div class="about-img-box">
+            <div class="about-initials">AL</div>
+            <div class="about-name">Anila Liaqat</div>
+            <div class="about-title">Founder & Digital Transformation Expert</div>
+            <div class="about-certs">
+              <span class="cert-pill">PMP</span>
+              <span class="cert-pill">CSM</span>
+              <span class="cert-pill">CSPO</span>
+              <span class="cert-pill">MS Software Engineering</span>
+            </div>
+            <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px">
+              <div style="font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px"><i class="ti ti-map-pin" style="color:var(--purple-light)"></i> Global — Remote & On-site</div>
+              <div style="font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px"><i class="ti ti-briefcase" style="color:var(--purple-light)"></i> 13+ years enterprise experience</div>
+              <div style="font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px"><i class="ti ti-world" style="color:var(--purple-light)"></i> KSA · UAE · UK · Malta · USA · Pakistan</div>
+              <div style="font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px"><i class="ti ti-mail" style="color:var(--purple-light)"></i> info@skillupworld.com</div>
+            </div>
+            <div style="display:flex;gap:8px;justify-content:center;margin-top:16px">
+              <a href="https://www.linkedin.com/in/anilaliaqat/" target="_blank"><div class="social-btn"><i class="ti ti-brand-linkedin"></i></div></a>
+              <a href="https://x.com/SkillUpWorld" target="_blank"><div class="social-btn"><i class="ti ti-brand-x"></i></div></a>
+              <a href="https://www.instagram.com/skillupworld/" target="_blank"><div class="social-btn"><i class="ti ti-brand-instagram"></i></div></a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="about-story">
+            <p>I grew up in Nathyagali — a small mountain town where education was hard to come by for boys, and almost impossible to imagine for girls.</p>
+            <p>My mother had no education. But she had something more powerful — an unshakeable belief that her children would have what she never did. She made sacrifices I am still unable to fully put into words. Allah made a way. And here I am.</p>
+            <p>Education didn't just change my career. It changed everything. My family. My possibilities. My identity. It quite literally changed the trajectory of my life.</p>
+            <p>That is why I built SkillUp World. Not because it was a market opportunity. But because someone was a <em style="color:var(--purple-light)">wasela</em> — a means — for me. And I want to be that for someone else.</p>
+            <p>After 13 years working across global enterprises — leading digital transformations in healthcare, fintech, textile, airlines, and public sector across Pakistan, Saudi Arabia, UAE, UK, and the USA — I realized something that troubled me deeply.</p>
+            <p>The knowledge that transforms careers and organizations is not secret. It is not complicated. <strong style="color:var(--text)">It is just inaccessible.</strong> SkillUp World is here to unlock it.</p>
+          </div>
+          <div class="about-values">
+            <div class="value-card">
+              <div class="value-title">🤲 Wasela</div>
+              <div class="value-desc">We exist to connect people to knowledge, opportunity, and each other</div>
+            </div>
+            <div class="value-card">
+              <div class="value-title">💡 Knowledge as a Right</div>
+              <div class="value-desc">World-class knowledge should never depend on where you were born</div>
+            </div>
+            <div class="value-card">
+              <div class="value-title">🔍 Problem-First</div>
+              <div class="value-desc">We understand problems deeply and honestly before prescribing</div>
+            </div>
+            <div class="value-card">
+              <div class="value-title">🚀 Generational Acceleration</div>
+              <div class="value-desc">What took 13 years to learn, the next generation gets by 25</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:48px">
+        <div class="section-tag">Domains</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px">
+          <span style="background:rgba(167,139,250,0.1);border:0.5px solid rgba(167,139,250,0.2);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--purple-pale)">Healthcare & VBC</span>
+          <span style="background:rgba(167,139,250,0.1);border:0.5px solid rgba(167,139,250,0.2);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--purple-pale)">Fintech & Banking</span>
+          <span style="background:rgba(167,139,250,0.1);border:0.5px solid rgba(167,139,250,0.2);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--purple-pale)">Textile & ESG</span>
+          <span style="background:rgba(167,139,250,0.1);border:0.5px solid rgba(167,139,250,0.2);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--purple-pale)">Airlines & Travel</span>
+          <span style="background:rgba(167,139,250,0.1);border:0.5px solid rgba(167,139,250,0.2);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--purple-pale)">Education & EdTech</span>
+          <span style="background:rgba(167,139,250,0.1);border:0.5px solid rgba(167,139,250,0.2);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--purple-pale)">Public Sector</span>
+          <span style="background:rgba(167,139,250,0.1);border:0.5px solid rgba(167,139,250,0.2);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--purple-pale)">Logistics & Supply Chain</span>
+          <span style="background:rgba(167,139,250,0.1);border:0.5px solid rgba(167,139,250,0.2);border-radius:20px;padding:5px 14px;font-size:12px;color:var(--purple-pale)">MIS & CRM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer-about"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: INSIGHTS
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-insights">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-tag">Insights</div>
+      <div class="section-title">Knowledge from <span class="grad">the field</span></div>
+      <div class="section-sub">Practical insights on AI, digital transformation, agile delivery, and career growth — drawn from 13+ years of global enterprise experience.</div>
+      <div class="insights-grid">
+        <div class="insight-card">
+          <div class="insight-tag-bar"><div class="insight-type">AI Enablement</div></div>
+          <div class="insight-body">
+            <div class="insight-title">Why Most Organizations Are Not Ready for AI (And What to Do About It)</div>
+            <div class="insight-excerpt">AI readiness is about people, data, and culture — not just tools. Here's a practical framework to assess and close the gap before investing in technology.</div>
+            <div class="insight-meta"><span class="insight-date">May 2026</span><span class="insight-read">5 min read →</span></div>
+          </div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-tag-bar"><div class="insight-type">Digital Advisory</div></div>
+          <div class="insight-body">
+            <div class="insight-title">The Problem with Buying Software Before Understanding Your Problem</div>
+            <div class="insight-excerpt">Most digital transformation failures start at the procurement stage. Organizations buy solutions to problems they haven't properly defined.</div>
+            <div class="insight-meta"><span class="insight-date">April 2026</span><span class="insight-read">6 min read →</span></div>
+          </div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-tag-bar"><div class="insight-type">Agile Transformation</div></div>
+          <div class="insight-body">
+            <div class="insight-title">Agile Is Not a Process. It's a Mindset. Here's the Difference.</div>
+            <div class="insight-excerpt">After 13 years of agile implementations across 5 countries, one thing is clear — teams that adopt the ceremonies without the mindset never truly transform.</div>
+            <div class="insight-meta"><span class="insight-date">March 2026</span><span class="insight-read">7 min read →</span></div>
+          </div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-tag-bar"><div class="insight-type">Career Development</div></div>
+          <div class="insight-body">
+            <div class="insight-title">What 13 Years in Global Enterprises Taught Me About Career Growth</div>
+            <div class="insight-excerpt">From Lahore to Saudi Arabia, UAE, UK, Malta and the US — the lessons that shaped my career and the framework I now share with every professional I coach.</div>
+            <div class="insight-meta"><span class="insight-date">February 2026</span><span class="insight-read">8 min read →</span></div>
+          </div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-tag-bar"><div class="insight-type">BridgeWork</div></div>
+          <div class="insight-body">
+            <div class="insight-title">Why Final Year Projects Are Failing Students — And How to Fix It</div>
+            <div class="insight-excerpt">The gap between what universities teach and what industry needs is growing. Here's why the final year project is the perfect moment to close it.</div>
+            <div class="insight-meta"><span class="insight-date">January 2026</span><span class="insight-read">5 min read →</span></div>
+          </div>
+        </div>
+        <div class="insight-card">
+          <div class="insight-tag-bar"><div class="insight-type">Digital Transformation</div></div>
+          <div class="insight-body">
+            <div class="insight-title">Value-Based Care & Digital Transformation: Lessons from the US Healthcare System</div>
+            <div class="insight-excerpt">Leading VBC digital transformation for US healthcare clients revealed powerful lessons about data integration, AI in clinical workflows, and change management.</div>
+            <div class="insight-meta"><span class="insight-date">December 2025</span><span class="insight-read">9 min read →</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:40px;text-align:center">
+        <div style="font-size:14px;color:var(--text2);margin-bottom:16px">Subscribe for monthly insights on AI, digital transformation & the future of work</div>
+        <div style="display:flex;gap:10px;max-width:440px;margin:0 auto">
+          <input type="email" placeholder="your@email.com" id="newsletter-email" style="flex:1">
+          <button class="btn-grad" onclick="subscribeNewsletter()" style="white-space:nowrap">Subscribe →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer-insights"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     PAGE: CONTACT / ASSESSMENT
+═══════════════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="section">
+    <div class="section-inner">
+      <div class="section-tag">Apply for assessment</div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-info-title">Let's understand your world first.</div>
+          <p class="contact-info-sub">Every engagement starts with a Strategic Assessment — a structured diagnostic session where we deeply understand your business, people, processes, and challenges before recommending anything.</p>
+          <div class="contact-detail">
+            <div class="contact-icon"><i class="ti ti-mail"></i></div>
+            <div><div class="contact-detail-text">Email us directly</div><div class="contact-detail-val">info@skillupworld.com</div></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon"><i class="ti ti-brand-whatsapp"></i></div>
+            <div><div class="contact-detail-text">WhatsApp</div><div class="contact-detail-val">+92 325 7760002</div></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon"><i class="ti ti-world"></i></div>
+            <div><div class="contact-detail-text">Delivery</div><div class="contact-detail-val">Global — Remote & On-site</div></div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon"><i class="ti ti-clock"></i></div>
+            <div><div class="contact-detail-text">Response time</div><div class="contact-detail-val">Within 48 hours</div></div>
+          </div>
+          <div style="margin-top:24px;background:rgba(124,58,237,0.1);border:0.5px solid rgba(124,58,237,0.22);border-radius:var(--radius);padding:16px">
+            <div style="font-size:12px;font-weight:500;color:var(--purple-pale);margin-bottom:6px">What happens next?</div>
+            <div style="font-size:12px;color:var(--text2);line-height:1.65">We review your application within 48 hours. If there's a strong fit, we'll schedule a 60-minute Strategic Assessment session — structured, focused, and genuinely useful regardless of whether we work together.</div>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="form-title">Strategic Assessment Application</div>
+          <div class="form-sub">Tell us about your organization and the challenge you're facing.</div>
+          <div id="assessment-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Full name *</label>
+                <input type="text" placeholder="Your full name" id="f-name">
+              </div>
+              <div class="form-group">
+                <label>Job title *</label>
+                <input type="text" placeholder="e.g. CTO, Head of Digital" id="f-title">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Organization *</label>
+                <input type="text" placeholder="Company name" id="f-org">
+              </div>
+              <div class="form-group">
+                <label>Industry *</label>
+                <select id="f-industry">
+                  <option value="">Select industry</option>
+                  <option>Healthcare & VBC</option>
+                  <option>Fintech & Banking</option>
+                  <option>Textile & ESG</option>
+                  <option>Airlines & Travel</option>
+                  <option>Education & EdTech</option>
+                  <option>Public Sector</option>
+                  <option>Technology</option>
+                  <option>Retail & E-commerce</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email address *</label>
+                <input type="email" placeholder="your@email.com" id="f-email">
+              </div>
+              <div class="form-group">
+                <label>Phone / WhatsApp</label>
+                <input type="text" placeholder="+1 234 567 8900" id="f-phone">
+              </div>
+            </div>
+            <div class="form-group" style="grid-column:1/-1">
+              <label>Service you're interested in *</label>
+              <select id="f-service">
+                <option value="">Select service</option>
+                <option>AI Enablement</option>
+                <option>Digital Advisory & Diagnostics</option>
+                <option>Digital Transformation</option>
+                <option>Software Development</option>
+                <option>Capability Building</option>
+                <option>Career Development</option>
+                <option>BridgeWork Platform</option>
+                <option>Verified Technology Marketplace</option>
+                <option>Not sure — need guidance</option>
+              </select>
+            </div>
+            <div class="form-group" style="grid-column:1/-1">
+              <label>What challenge are you facing? *</label>
+              <textarea placeholder="Describe the problem you're trying to solve — the more context the better..." id="f-challenge"></textarea>
+            </div>
+            <div class="form-group" style="grid-column:1/-1">
+              <label>What does success look like for you?</label>
+              <textarea placeholder="What would a great outcome look like in 6-12 months?" id="f-success" style="min-height:80px"></textarea>
+            </div>
+            <button class="form-submit" onclick="submitForm()">Submit Application →</button>
+          </div>
+          <div class="form-success" id="form-success">
+            <i class="ti ti-circle-check"></i>
+            <div class="form-success-title">Application received!</div>
+            <div class="form-success-sub">Thank you for reaching out. We'll review your application and get back to you within 48 hours.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer-contact"></div>
+</div>
+
+<!-- FOOTER TEMPLATE -->
+<template id="footer-template">
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-skill">SkillUp</div>
+        <span class="footer-brand-world">World</span>
+        <div class="footer-tagline">Built to Fit — Knowledge. Access. Impact.<br>Global AI-Enabled Digital Transformation Consultancy</div>
+        <div class="footer-certs">
+          <span class="footer-cert">PMP</span>
+          <span class="footer-cert">CSM</span>
+          <span class="footer-cert">CSPO</span>
+          <span class="footer-cert">13+ Years</span>
+        </div>
+        <div class="footer-socials" style="margin-top:12px">
+          <a href="https://www.linkedin.com/in/anilaliaqat/" target="_blank"><div class="social-btn"><i class="ti ti-brand-linkedin"></i></div></a>
+          <a href="https://x.com/SkillUpWorld" target="_blank"><div class="social-btn"><i class="ti ti-brand-x"></i></div></a>
+          <a href="https://www.instagram.com/skillupworld/" target="_blank"><div class="social-btn"><i class="ti ti-brand-instagram"></i></div></a>
+          <a href="https://www.facebook.com/skillupworld" target="_blank"><div class="social-btn"><i class="ti ti-brand-facebook"></i></div></a>
+          <a href="https://www.youtube.com/@skillupworld" target="_blank"><div class="social-btn"><i class="ti ti-brand-youtube"></i></div></a>
+          <a href="https://wa.me/923257760002" target="_blank"><div class="social-btn"><i class="ti ti-brand-whatsapp"></i></div></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">What We Do</div>
+        <span class="footer-link" onclick="showPage('whatwedo')">AI Enablement</span>
+        <span class="footer-link" onclick="showPage('whatwedo')">Digital Advisory</span>
+        <span class="footer-link" onclick="showPage('whatwedo')">Digital Transformation</span>
+        <span class="footer-link" onclick="showPage('whatwedo')">Software Development</span>
+        <span class="footer-link" onclick="showPage('whatwedo')">Capability Building</span>
+        <span class="footer-link" onclick="showPage('whatwedo')">Career Development</span>
+      </div>
+      <div>
+        <div class="footer-col-title">Our Products</div>
+        <span class="footer-link" onclick="showPage('products')">Verified Marketplace</span>
+        <span class="footer-link" onclick="showPage('products')">BridgeWork Platform</span>
+        <div class="footer-col-title" style="margin-top:20px">Company</div>
+        <span class="footer-link" onclick="showPage('about')">About Us</span>
+        <span class="footer-link" onclick="showPage('vision')">2030 Vision</span>
+        <span class="footer-link" onclick="showPage('whowserve')">Who We Serve</span>
+        <span class="footer-link" onclick="showPage('insights')">Insights & Blog</span>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div style="font-size:13px;color:var(--text3);margin-bottom:8px">info@skillupworld.com</div>
+        <div style="font-size:13px;color:var(--text3);margin-bottom:8px">+92 325 7760002</div>
+        <div style="font-size:13px;color:var(--text3);margin-bottom:20px">Global — Remote & On-site</div>
+        <button class="btn-grad" style="width:100%;font-size:13px;padding:11px" onclick="showPage('contact')">Apply for Assessment →</button>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 SkillUp World. All rights reserved. Designed with ❤️ for the next generation.</div>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+</template>
+
+<script>
+const pages=['home','whatwedo','whowserve','products','vision','about','insights','contact'];
+
+function renderFooters(){
+  pages.forEach(p=>{
+    const el=document.getElementById('footer-'+p);
+    if(el){
+      const t=document.getElementById('footer-template');
+      el.appendChild(t.content.cloneNode(true));
+    }
+  });
+}
+
+function showPage(id){
+  pages.forEach(p=>{
+    document.getElementById('page-'+p).classList.remove('active');
+  });
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('navbar');
+  nav.classList.toggle('scrolled',window.scrollY>20);
+});
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toast-msg').textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+function submitForm(){
+  const name=document.getElementById('f-name').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  const challenge=document.getElementById('f-challenge').value.trim();
+  if(!name||!email||!challenge){
+    showToast('Please fill in all required fields');
+    document.getElementById('toast').style.background='rgba(180,50,50,0.95)';
+    document.getElementById('toast').style.borderColor='rgba(240,100,100,0.4)';
+    setTimeout(()=>{
+      document.getElementById('toast').style.background='rgba(16,110,86,0.95)';
+      document.getElementById('toast').style.borderColor='rgba(52,211,153,0.4)';
+    },3600);
+    return;
+  }
+  document.getElementById('assessment-form').style.display='none';
+  document.getElementById('form-success').style.display='block';
+  showToast('Application submitted successfully!');
+}
+
+function subscribeNewsletter(){
+  const email=document.getElementById('newsletter-email').value.trim();
+  if(!email||!email.includes('@')){showToast('Please enter a valid email address');return;}
+  showToast('Subscribed! Welcome to SkillUp World insights.');
+  document.getElementById('newsletter-email').value='';
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  renderFooters();
+});
+</script>
+</body>
+</html>
