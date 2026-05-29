@@ -43,19 +43,19 @@ a{text-decoration:none;color:inherit}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
 
 /* ─── NAVBAR ─── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(7,7,26,0.9);backdrop-filter:blur(20px);border-bottom:0.5px solid var(--border);transition:all .3s}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 56px;height:80px;display:flex;align-items:center;justify-content:space-between;background:rgba(7,7,26,0.92);backdrop-filter:blur(24px);border-bottom:0.5px solid var(--border);transition:all .3s}
 .nav.scrolled{background:rgba(7,7,26,0.98)}
-.nav-logo{display:flex;align-items:center;gap:10px;cursor:pointer}
-.nav-logo-box{width:36px;height:36px;border-radius:9px;background:linear-gradient(135deg,var(--purple),var(--indigo));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:11px;font-weight:700;color:#fff;letter-spacing:0.5px}
-.nav-logo-text{display:flex;flex-direction:column;line-height:1.15}
-.nav-logo-skill{font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--text)}
-.nav-logo-world{font-size:9px;color:var(--purple-light);letter-spacing:0.6px;text-transform:uppercase}
-.nav-links{display:flex;align-items:center;gap:28px}
-.nav-link{font-size:13px;color:var(--text2);cursor:pointer;transition:color .2s;font-family:var(--font-body)}
+.nav-logo{display:flex;align-items:center;gap:12px;cursor:pointer}
+.nav-logo-box{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--purple),var(--indigo));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:13px;font-weight:700;color:#fff;letter-spacing:0.5px}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.2}
+.nav-logo-skill{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--text)}
+.nav-logo-world{font-size:11px;color:var(--purple-light);letter-spacing:0.8px;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-link{font-size:15px;color:var(--text2);cursor:pointer;transition:color .2s;font-family:var(--font-body);font-weight:500}
 .nav-link:hover,.nav-link.active{color:var(--purple-light)}
-.nav-cta{background:linear-gradient(135deg,var(--purple),var(--indigo));color:#fff;border:none;padding:9px 20px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--font-body);transition:opacity .2s}
+.nav-cta{background:linear-gradient(135deg,var(--purple),var(--indigo));color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:opacity .2s;white-space:nowrap}
 .nav-cta:hover{opacity:.85}
-.nav-mobile-toggle{display:none;background:none;border:none;color:var(--text);font-size:22px;cursor:pointer}
+.nav-mobile-toggle{display:none;background:none;border:none;color:var(--text);font-size:26px;cursor:pointer}
 
 /* ─── PAGES ─── */
 .page{display:none;min-height:100vh;padding-top:64px}
@@ -80,7 +80,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 .stat-label{font-size:12px;color:var(--text3);margin-top:2px}
 
 /* ─── SECTION COMMONS ─── */
-.section{padding:80px 40px;position:relative}
+.section{padding:100px 40px 80px;position:relative}
 .section.alt{background:rgba(255,255,255,0.015)}
 .section-inner{max-width:1100px;margin:0 auto}
 .section-tag{display:inline-block;background:rgba(167,139,250,0.1);border:0.5px solid rgba(167,139,250,0.22);border-radius:20px;padding:4px 14px;font-size:11px;color:var(--purple-pale);margin-bottom:14px;letter-spacing:.07em;text-transform:uppercase;font-weight:500}
@@ -321,7 +321,7 @@ footer{background:rgba(5,5,15,0.97);border-top:0.5px solid rgba(124,58,237,0.18)
     <span class="nav-link" onclick="showPage('insights')">Insights</span>
     <span class="nav-link" onclick="showPage('contact')">Contact</span>
   </div>
-  <button class="nav-cta" onclick="showPage('contact')">Apply for Assessment →</button>
+  <button class="nav-cta" onclick="showPage('contact')">Apply for Strategic Assessment →</button>
   <button class="nav-mobile-toggle" onclick="toggleMenu()"><i class="ti ti-menu-2"></i></button>
 </nav>
 
@@ -459,16 +459,16 @@ footer{background:rgba(5,5,15,0.97);border-top:0.5px solid rgba(124,58,237,0.18)
   <div class="section">
     <div class="section-inner">
       <div class="section-tag">How We Deliver Value</div>
-      <div class="section-title">Three Pillars. <span class="grad">Built to Fit</span><br>your exact context</div>
+      <div class="section-title">Two Practice Areas. <span class="grad">Built to Fit</span><br>your exact context</div>
       <div class="section-sub">Every engagement starts with understanding your world. We never prescribe before we diagnose.</div>
 
-      <!-- AI POWERED ENTERPRISE SERVICES -->
+      <!-- AI POWERED ENTERPRISE SERVICES (merged) -->
       <div style="margin-bottom:48px">
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
           <div style="width:40px;height:40px;border-radius:10px;background:rgba(167,139,250,0.15);display:flex;align-items:center;justify-content:center;font-size:20px"><i class="ti ti-brain" style="color:#C4B5FD"></i></div>
           <div>
             <div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text)">1. AI Powered Enterprise Services</div>
-            <div style="font-size:13px;color:var(--text2)">Helping individuals & organizations think, prepare, and act with AI</div>
+            <div style="font-size:13px;color:var(--text2)">From AI thinking to full-scale digital transformation — end-to-end, built to fit your context</div>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
@@ -491,21 +491,6 @@ footer{background:rgba(5,5,15,0.97);border-top:0.5px solid rgba(124,58,237,0.18)
               <div class="service-item"><i class="ti ti-chevron-right"></i> AI governance framework</div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="divider" style="margin:0 0 48px"></div>
-
-      <!-- ENTERPRISE SERVICES -->
-      <div style="margin-bottom:48px">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-          <div style="width:40px;height:40px;border-radius:10px;background:rgba(129,140,248,0.15);display:flex;align-items:center;justify-content:center;font-size:20px"><i class="ti ti-building-skyscraper" style="color:#A5B4FC"></i></div>
-          <div>
-            <div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text)">2. AI Powered Enterprise Services — Advisory & Transformation</div>
-            <div style="font-size:13px;color:var(--text2)">End-to-end advisory and transformation services</div>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px">
           <div class="service-card">
             <div class="service-card-title">Digital Advisory & Diagnostics</div>
             <div class="service-card-desc">We sit on your side of the table — your voice in the digital world</div>
@@ -541,7 +526,7 @@ footer{background:rgba(5,5,15,0.97);border-top:0.5px solid rgba(124,58,237,0.18)
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
           <div style="width:40px;height:40px;border-radius:10px;background:rgba(52,211,153,0.15);display:flex;align-items:center;justify-content:center;font-size:20px"><i class="ti ti-award" style="color:#6EE7B7"></i></div>
           <div>
-            <div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text)">3. Talent Development</div>
+            <div style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text)">2. Talent Development</div>
             <div style="font-size:13px;color:var(--text2)">Developing future-ready people through strategic learning & partnerships</div>
           </div>
         </div>
@@ -740,7 +725,7 @@ footer{background:rgba(5,5,15,0.97);border-top:0.5px solid rgba(124,58,237,0.18)
     <div class="vision-year-bg">2030</div>
     <div class="section-tag">Our north star</div>
     <div class="section-title" style="font-size:40px;margin-bottom:14px">Where we are going.<br><span class="grad">Why it matters.</span></div>
-    <p style="font-size:16px;color:var(--text2);max-width:580px;margin:0 auto 56px;line-height:1.75">SkillUp World was born from a belief that knowledge and opportunity should not be privileges. We are committed to making that belief a measurable, global reality.</p>
+    <p style="font-size:16px;color:var(--text2);max-width:580px;margin:0 auto 56px;line-height:1.75">SkillUp World was born at the intersection of a natural talent for technology and innovation — food for the mind — and a deep passion for education.</p>
   </div>
 
   <div class="section" style="padding-top:0">
@@ -803,8 +788,8 @@ footer{background:rgba(5,5,15,0.97);border-top:0.5px solid rgba(124,58,237,0.18)
       </div>
 
       <div class="founder-quote-box">
-        <div class="fq-text">"Someone became a wasela for me. My mother, with no education of her own, believed before the world did. Now I want to be that wasela for someone else. SkillUp World is not just a company — it is a promise. A promise that where you start will never determine where you go."</div>
-        <div class="fq-name">— Anila Liaqat · Founder & CEO, SkillUp World</div>
+        <div class="fq-text">"By 2030, SkillUp World will be the most trusted AI-enabled ecosystem in the region — where organisations transform with confidence, professionals grow with purpose, and talent is recognised for what it can do, not just where it came from."</div>
+        <div class="fq-name">— The SkillUp World 2030 Commitment</div>
       </div>
     </div>
   </div>
@@ -817,111 +802,175 @@ footer{background:rgba(5,5,15,0.97);border-top:0.5px solid rgba(124,58,237,0.18)
 <div class="page" id="page-about">
   <div class="section">
     <div class="section-inner">
+
+      <!-- ── 1. WHO WE ARE ── -->
       <div class="section-tag">About us</div>
-      <div class="section-title">Built from <span class="grad">lived experience</span></div>
-      <div style="height:32px"></div>
-      <div class="about-grid">
-        <div>
-          <div class="about-img-box">
-            <div class="about-initials">AL</div>
-            <div class="about-name">Anila Liaqat</div>
-            <div class="about-title">Founder & CEO · Digital Transformation Leader</div>
-            <div class="about-certs">
-              <span class="cert-pill">MS Software Engineering</span>
-              <span class="cert-pill">AI Research since 2018</span>
-              <span class="cert-pill">SECP Registered</span>
-            </div>
-            <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px">
-              <div style="font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px"><i class="ti ti-map-pin" style="color:var(--purple-light)"></i> Global — Remote & On-site</div>
-              <div style="font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px"><i class="ti ti-briefcase" style="color:var(--purple-light)"></i> 13+ years global enterprise delivery</div>
-              <div style="font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px"><i class="ti ti-world" style="color:var(--purple-light)"></i> 🇵🇰 Pakistan · 🇦🇪 UAE · 🇸🇦 Saudi Arabia · 🇲🇾 Malaysia · 🇺🇸 USA</div>
-              <div style="font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px"><i class="ti ti-world" style="color:var(--purple-light)"></i> Also delivered in: 🇲🇹 Malta</div>
-              <div style="font-size:12px;color:var(--text2);display:flex;align-items:center;gap:6px"><i class="ti ti-mail" style="color:var(--purple-light)"></i> info@skillupworld.com</div>
-            </div>
-            <div style="display:flex;gap:8px;justify-content:center;margin-top:16px">
-              <a href="https://www.linkedin.com/company/skillupworld" target="_blank"><div class="social-btn"><i class="ti ti-brand-linkedin"></i></div></a>
-              <a href="https://x.com/SkillUpWorld" target="_blank"><div class="social-btn"><i class="ti ti-brand-x"></i></div></a>
-              <a href="https://www.instagram.com/skillupworld/" target="_blank"><div class="social-btn"><i class="ti ti-brand-instagram"></i></div></a>
-            </div>
+      <div class="section-title">Who We <span class="grad">Are</span></div>
+      <div style="height:16px"></div>
+      <p style="font-size:15px;color:var(--text2);line-height:1.9;max-width:780px">SkillUp World is an AI-enabled digital transformation and talent development company, incorporated in Pakistan and operating globally. We work at the intersection of enterprise technology, human capability, and intelligent systems — helping organisations transform smarter, and helping professionals grow faster. We are not a training company that dabbles in consulting. We are not a software house that sells seats. We are a purpose-built ecosystem that integrates advisory, talent, and technology into one coherent engine for growth.</p>
+
+      <!-- ── 2. MISSION & VISION ── -->
+      <div style="margin-top:56px">
+        <div class="section-tag">Direction</div>
+        <div class="section-title" style="font-size:28px;margin-bottom:24px">Mission & <span class="grad">Vision</span></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <div style="background:rgba(124,58,237,0.08);border:0.5px solid rgba(124,58,237,0.28);border-radius:var(--radius-lg);padding:28px">
+            <div class="section-tag" style="margin-bottom:14px">Our Mission</div>
+            <p style="font-size:14px;color:var(--text2);line-height:1.85">To power human and organisational growth through AI-enabled platforms, verified technology intelligence, and real-world career experiences — making world-class digital opportunity accessible to all.</p>
+          </div>
+          <div style="background:rgba(79,70,229,0.08);border:0.5px solid rgba(79,70,229,0.28);border-radius:var(--radius-lg);padding:28px">
+            <div class="section-tag" style="margin-bottom:14px">Our Vision</div>
+            <p style="font-size:14px;color:var(--text2);line-height:1.85">To be the most trusted AI-enabled ecosystem for digital transformation, technology intelligence, and talent development — where organisations transform smarter, students launch stronger, and professionals grow faster.</p>
           </div>
         </div>
-        <div>
-          <div class="about-story">
-            <p>I grew up in Nathyagali — a small mountain town where education was hard to come by for boys, and almost impossible to imagine for girls.</p>
-            <p>My mother had no education. But she had something more powerful — an unshakeable belief that her children would have what she never did. She made sacrifices I am still unable to fully put into words. Allah made a way. And here I am.</p>
-            <p>Education didn't just change my career. It changed everything. My family. My possibilities. My identity. It quite literally changed the trajectory of my life.</p>
-            <p>That is why I built SkillUp World. Not because it was a market opportunity. But because someone was a <em style="color:var(--purple-light)">wasela</em> — a means — for me. And I want to be that for someone else.</p>
-            <p>After 13 years working across global enterprises — leading digital transformations in healthcare, fintech, textile, airlines, and public sector across Pakistan, Saudi Arabia, UAE, UK, and the USA — I realized something that troubled me deeply.</p>
-            <p>The knowledge that transforms careers and organizations is not secret. It is not complicated. <strong style="color:var(--text)">It is just inaccessible.</strong> SkillUp World is here to unlock it.</p>
+        <div style="margin-top:16px;background:rgba(16,185,129,0.07);border:0.5px solid rgba(16,185,129,0.22);border-radius:var(--radius);padding:16px;text-align:center">
+          <p style="font-size:13px;color:var(--green-light);font-weight:600;letter-spacing:.04em">Our Mantra — Learn with Purpose. Serve with Impact. Grow Continuously.</p>
+        </div>
+      </div>
+
+      <!-- ── 3. WHY WE EXIST ── -->
+      <div style="margin-top:56px">
+        <div class="section-tag">Our Origin</div>
+        <div class="section-title" style="font-size:28px;margin-bottom:20px">Why We <span class="grad">Exist</span></div>
+        <p style="font-size:15px;color:var(--text2);line-height:1.9;max-width:780px">SkillUp World was born from 13+ years of working inside some of the world's most complex enterprise environments — from healthcare AI in the United States to agile transformation in Saudi Arabia, digital banking in the UAE, IoT logistics in Malta, and airline systems in the UK. In every engagement, the same frustrations surfaced: organisations overpaying for technology they didn't understand, talent that had qualifications without capability, and advisory firms that parachuted in with generic playbooks and disappeared. We built SkillUp World to be the answer to all three problems — at once.</p>
+      </div>
+
+      <!-- ── 4. KEY NUMBERS ── -->
+      <div style="margin-top:56px">
+        <div class="section-tag">By the numbers</div>
+        <div class="section-title" style="font-size:28px;margin-bottom:24px">The <span class="grad">Numbers</span> Behind Us</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px">
+          <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius-lg);padding:28px 20px;text-align:center">
+            <div class="stat-num" style="font-size:42px">13+</div>
+            <div class="stat-label">Years of Enterprise Experience</div>
           </div>
-          <div class="about-values">
-            <div class="value-card">
-              <div class="value-title">🤲 Wasela</div>
-              <div class="value-desc">We exist to connect people to knowledge, opportunity, and each other</div>
-            </div>
-            <div class="value-card">
-              <div class="value-title">💡 Knowledge as a Right</div>
-              <div class="value-desc">World-class knowledge should never depend on where you were born</div>
-            </div>
-            <div class="value-card">
-              <div class="value-title">🔍 Problem-First</div>
-              <div class="value-desc">We understand problems deeply and honestly before prescribing</div>
-            </div>
-            <div class="value-card">
-              <div class="value-title">🚀 Generational Acceleration</div>
-              <div class="value-desc">What took 13 years to learn, the next generation gets by 25</div>
-            </div>
+          <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius-lg);padding:28px 20px;text-align:center">
+            <div class="stat-num" style="font-size:42px">5+</div>
+            <div class="stat-label">Countries Delivered In</div>
+          </div>
+          <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius-lg);padding:28px 20px;text-align:center">
+            <div class="stat-num" style="font-size:42px">500+</div>
+            <div class="stat-label">Professionals Trained & Mentored</div>
+          </div>
+          <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius-lg);padding:28px 20px;text-align:center">
+            <div class="stat-num" style="font-size:42px">2023</div>
+            <div class="stat-label">Founded · SECP Registered</div>
           </div>
         </div>
       </div>
 
-      <!-- WHY SKILLUP WORLD -->
+      <!-- ── 5. WHAT MAKES US DIFFERENT ── -->
       <div style="margin-top:56px">
         <div class="section-tag">Why SkillUp World</div>
-        <div class="section-title" style="font-size:28px;margin-bottom:24px">Eight reasons to <span class="grad">trust us</span></div>
+        <div class="section-title" style="font-size:28px;margin-bottom:24px">What Makes Us <span class="grad">Different</span></div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
           <div class="value-card"><div class="value-title">⚡ Active Practitioners</div><div class="value-desc">We are still inside organisations solving real problems — not advising from a distance.</div></div>
-          <div class="value-card"><div class="value-title">🤖 AI Expertise Since 2018</div><div class="value-desc">Our founder published AI research papers in 2018 — before AI became a buzzword. Real expertise, not trend-chasing.</div></div>
+          <div class="value-card"><div class="value-title">🤖 AI-First Since 2018</div><div class="value-desc">Our founder published AI research papers in 2018 — before AI became a buzzword. Real expertise, not trend-chasing.</div></div>
           <div class="value-card"><div class="value-title">🎓 Internationally Certified</div><div class="value-desc">Delivering to global standards — certified in project management, agile delivery, and product ownership.</div></div>
-          <div class="value-card"><div class="value-title">🛡️ Client-Side Advisory</div><div class="value-desc">We represent YOUR interests — not the software house. Independent, neutral, accountable to you.</div></div>
-          <div class="value-card"><div class="value-title">🌍 Global Reach</div><div class="value-desc">Operating across 5+ countries with on-ground delivery capability and genuine local understanding.</div></div>
+          <div class="value-card"><div class="value-title">🛡️ Client-Side Advisory</div><div class="value-desc">We represent your interests — not the software house. Independent, neutral, accountable to you.</div></div>
+          <div class="value-card"><div class="value-title">🌍 Global Delivery</div><div class="value-desc">Delivered across 5+ countries with on-ground capability and genuine local understanding.</div></div>
           <div class="value-card"><div class="value-title">🔗 Ecosystem Thinking</div><div class="value-desc">We connect organisations, talent, technology, and platforms — one integrated growth engine.</div></div>
           <div class="value-card"><div class="value-title">🎯 Built to Fit</div><div class="value-desc">No generic frameworks. No off-the-shelf solutions. Everything designed around your specific context.</div></div>
-          <div class="value-card"><div class="value-title">✅ SECP Registered</div><div class="value-desc">Legally registered company in Pakistan — accountable, transparent, and here for the long term.</div></div>
+          <div class="value-card"><div class="value-title">✅ SECP Registered</div><div class="value-desc">Legally incorporated in Pakistan — accountable, transparent, and here for the long term.</div></div>
         </div>
       </div>
 
-      <!-- GLOBAL CLIENTS -->
+      <!-- ── 6. GLOBAL PRESENCE ── -->
       <div style="margin-top:56px">
-        <div class="section-tag">Global Clients</div>
-        <div class="section-title" style="font-size:28px;margin-bottom:8px">Trusted by <span class="grad">forward-thinking organisations</span></div>
-        <div style="font-size:13px;color:var(--text3);margin-bottom:24px">All engagements protected under NDA.</div>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px">
-          <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius);padding:20px"><div style="font-size:12px;font-weight:600;color:#A78BFA;margin-bottom:8px">🇸🇦 KSA · Healthcare</div><div style="font-size:12px;color:var(--text3);line-height:1.6">Health Insurance Digitization · Agile at Scale · Jira · Confluence · Azure DevOps</div></div>
-          <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius);padding:20px"><div style="font-size:12px;font-weight:600;color:#6EE7B7;margin-bottom:8px">🇵🇰 Pakistan · Textile & ESG</div><div style="font-size:12px;color:var(--text3);line-height:1.6">ESG Traceability Program · BPMN · Power BI · Blockchain-ready Architecture · 40% reduction in manual reporting</div></div>
-          <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius);padding:20px"><div style="font-size:12px;font-weight:600;color:#93C5FD;margin-bottom:8px">🇺🇸 USA · Healthcare</div><div style="font-size:12px;color:var(--text3);line-height:1.6">Value-Based Care Platform · AI · ML · Predictive Analytics · Care Coordination · ACO Delivery</div></div>
-          <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius);padding:20px"><div style="font-size:12px;font-weight:600;color:#A78BFA;margin-bottom:8px">🇦🇪 UAE · Public Sector & Fintech</div><div style="font-size:12px;color:var(--text3);line-height:1.6">Public Sector CRM · Microsoft D365 · MS F&O · Power BI · POS</div></div>
-          <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius);padding:20px"><div style="font-size:12px;font-weight:600;color:#FCD34D;margin-bottom:8px">🇬🇧 UK · Airlines & Travel</div><div style="font-size:12px;color:var(--text3);line-height:1.6">Airlines Technology · LeSS · GDS · NDC · Azure DevOps · Automated Booking Systems</div></div>
-          <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius);padding:20px"><div style="font-size:12px;font-weight:600;color:#F9A8D4;margin-bottom:8px">🇲🇹 Malta · IoT & Logistics</div><div style="font-size:12px;color:var(--text3);line-height:1.6">IoT & Logistics Platform · BPMN · Big Data · ML · Apache Kafka · Real-time Asset Tracking</div></div>
+        <div class="section-tag">Global Presence</div>
+        <div class="section-title" style="font-size:28px;margin-bottom:24px">Where We've <span class="grad">Delivered</span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:16px">
+          <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius-lg);padding:24px 16px;text-align:center">
+            <div style="font-size:36px;margin-bottom:8px">🇵🇰</div>
+            <div style="font-size:13px;font-weight:700;color:var(--text1)">Pakistan</div>
+            <div style="font-size:11px;color:var(--text3);margin-top:4px">HQ & Expansion</div>
+          </div>
+          <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius-lg);padding:24px 16px;text-align:center">
+            <div style="font-size:36px;margin-bottom:8px">🇦🇪</div>
+            <div style="font-size:13px;font-weight:700;color:var(--text1)">UAE</div>
+            <div style="font-size:11px;color:var(--text3);margin-top:4px">Public Sector & Fintech</div>
+          </div>
+          <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius-lg);padding:24px 16px;text-align:center">
+            <div style="font-size:36px;margin-bottom:8px">🇸🇦</div>
+            <div style="font-size:13px;font-weight:700;color:var(--text1)">Saudi Arabia</div>
+            <div style="font-size:11px;color:var(--text3);margin-top:4px">Healthcare</div>
+          </div>
+          <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius-lg);padding:24px 16px;text-align:center">
+            <div style="font-size:36px;margin-bottom:8px">🇲🇾</div>
+            <div style="font-size:13px;font-weight:700;color:var(--text1)">Malaysia</div>
+            <div style="font-size:11px;color:var(--text3);margin-top:4px">Digital Services</div>
+          </div>
+          <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius-lg);padding:24px 16px;text-align:center">
+            <div style="font-size:36px;margin-bottom:8px">🇺🇸</div>
+            <div style="font-size:13px;font-weight:700;color:var(--text1)">USA</div>
+            <div style="font-size:11px;color:var(--text3);margin-top:4px">Healthcare AI</div>
+          </div>
         </div>
-        <div style="margin-top:16px;background:rgba(124,58,237,0.08);border:0.5px solid rgba(124,58,237,0.22);border-radius:var(--radius);padding:14px 20px">
-          <p style="font-size:13px;color:var(--purple-light)">🚀 Now Expanding Nationwide in Pakistan — Actively seeking enterprise partners, university collaborators, and CareerLaunchpad participants.</p>
+        <div style="background:rgba(124,58,237,0.07);border:0.5px solid rgba(124,58,237,0.2);border-radius:var(--radius);padding:14px 20px;text-align:center">
+          <p style="font-size:13px;color:var(--text3)">Also delivered in <span style="color:var(--purple-light);font-weight:600">🇲🇹 Malta</span> and <span style="color:var(--purple-light);font-weight:600">🇬🇧 UK</span></p>
         </div>
       </div>
 
-      <div style="margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:20px">
-        <div style="background:rgba(124,58,237,0.08);border:0.5px solid rgba(124,58,237,0.22);border-radius:var(--radius-lg);padding:24px">
-          <div class="section-tag" style="margin-bottom:12px">Our Mission</div>
-          <p style="font-size:14px;color:var(--text2);line-height:1.8">To power human and organizational growth through AI-enabled platforms, verified technology intelligence, and real-world career experiences — making world-class digital opportunity accessible to all.</p>
-        </div>
-        <div style="background:rgba(79,70,229,0.08);border:0.5px solid rgba(79,70,229,0.22);border-radius:var(--radius-lg);padding:24px">
-          <div class="section-tag" style="margin-bottom:12px">Our Vision</div>
-          <p style="font-size:14px;color:var(--text2);line-height:1.8">To be the most trusted AI-enabled ecosystem for digital transformation, technology intelligence, and talent development — where organizations transform smarter, students launch stronger, and professionals grow faster.</p>
+      <!-- ── 7. LEADERSHIP ── -->
+      <div style="margin-top:56px">
+        <div class="section-tag">Leadership</div>
+        <div class="section-title" style="font-size:28px;margin-bottom:24px">Meet the <span class="grad">Founder</span></div>
+        <div style="background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius-lg);padding:32px;display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start">
+          <div style="width:200px;height:240px;border-radius:16px;overflow:hidden;flex-shrink:0;border:1.5px solid rgba(124,58,237,0.35);box-shadow:0 8px 32px rgba(124,58,237,0.2)"><img src="WhatsApp Image 2026-03-04 at 6.45.12 PM.jpeg" alt="Anila Liaqat" style="width:100%;height:100%;object-fit:cover;object-position:center top"></div>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-bottom:4px">Anila Liaqat</div>
+            <div style="font-size:13px;color:var(--purple-light);font-weight:600;margin-bottom:16px">Founder & CEO, SkillUp World</div>
+            <p style="font-size:14px;color:var(--text2);line-height:1.85">Anila brings 13+ years of enterprise technology and transformation experience across healthcare, fintech, public sector, logistics, and aviation industries. She has led AI, agile, and digital transformation engagements across 5+ countries and published AI research as early as 2018. A certified practitioner in project management and agile delivery, she founded SkillUp World to build the ecosystem she wished had existed throughout her career — one that connects real enterprise knowledge with emerging talent, and trusted advisory with verified technology.</p>
+          </div>
         </div>
       </div>
-      <div style="margin-top:20px;background:rgba(16,110,86,0.08);border:0.5px solid rgba(16,110,86,0.22);border-radius:var(--radius);padding:16px;text-align:center">
-        <p style="font-size:13px;color:var(--green-light);font-weight:500">We serve any organization at any stage of their digital journey — across any industry, in any market.</p>
+
+      <!-- ── 8. FOUNDER MESSAGE ── -->
+      <div style="margin-top:40px">
+        <div style="border-left:4px solid var(--purple);padding:24px 28px;background:rgba(124,58,237,0.06);border-radius:0 var(--radius-lg) var(--radius-lg) 0">
+          <p style="font-size:16px;color:var(--text1);line-height:1.9;font-style:italic;margin-bottom:16px">"I built SkillUp World because I kept seeing the same problem on every continent — smart people and strong organisations held back by the gap between what they knew and what they needed. We don't just close that gap. We build the bridge, walk across it with you, and make sure you never need us to carry you again."</p>
+          <div style="font-size:13px;font-weight:700;color:var(--purple-light)">— Anila Liaqat, Founder & CEO</div>
+        </div>
       </div>
+
+      <!-- ── 9. TRUST SIGNALS ── -->
+      <div style="margin-top:56px">
+        <div class="section-tag">Why Trust Us</div>
+        <div class="section-title" style="font-size:28px;margin-bottom:24px">Built on <span class="grad">Accountability</span></div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;align-items:flex-start;gap:14px;background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius);padding:18px 20px">
+            <span style="color:var(--green-light);font-size:18px;flex-shrink:0">✅</span>
+            <div><div style="font-size:14px;font-weight:600;color:var(--text1);margin-bottom:2px">SECP Registered Company</div><div style="font-size:13px;color:var(--text3)">Registration No. 0319699 · Incorporated 19 December 2025</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius);padding:18px 20px">
+            <span style="color:var(--green-light);font-size:18px;flex-shrink:0">✅</span>
+            <div><div style="font-size:14px;font-weight:600;color:var(--text1);margin-bottom:2px">NDA-Protected Engagements</div><div style="font-size:13px;color:var(--text3)">All client work is conducted under strict non-disclosure agreements</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius);padding:18px 20px">
+            <span style="color:var(--green-light);font-size:18px;flex-shrink:0">✅</span>
+            <div><div style="font-size:14px;font-weight:600;color:var(--text1);margin-bottom:2px">Internationally Certified Practitioners</div><div style="font-size:13px;color:var(--text3)">Certified across project management, agile delivery, and product ownership frameworks</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius);padding:18px 20px">
+            <span style="color:var(--green-light);font-size:18px;flex-shrink:0">✅</span>
+            <div><div style="font-size:14px;font-weight:600;color:var(--text1);margin-bottom:2px">13+ Years of Verified Enterprise Delivery</div><div style="font-size:13px;color:var(--text3)">Real results across healthcare, fintech, public sector, logistics, and aviation</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:14px;background:var(--card);border:0.5px solid var(--card-border);border-radius:var(--radius);padding:18px 20px">
+            <span style="color:var(--green-light);font-size:18px;flex-shrink:0">✅</span>
+            <div><div style="font-size:14px;font-weight:600;color:var(--text1);margin-bottom:2px">Client-First, Always</div><div style="font-size:13px;color:var(--text3)">We represent your interests — not vendors, not platforms. Independent advisory you can trust.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 10. CTA ── -->
+      <div style="margin-top:56px;background:linear-gradient(135deg,rgba(124,58,237,0.12),rgba(79,70,229,0.08));border:0.5px solid rgba(124,58,237,0.28);border-radius:var(--radius-lg);padding:40px 32px;text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;margin-bottom:10px">Ready to <span class="grad">work together?</span></div>
+        <p style="font-size:14px;color:var(--text2);margin-bottom:28px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7">Every engagement starts with a conversation. Tell us where you are, and we'll help you get to where you need to be.</p>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+          <button class="btn-grad" onclick="showPage('contact')" style="padding:14px 28px;font-size:14px">Contact Us →</button>
+          <button class="btn-ghost" onclick="showPage('whatwedo')" style="padding:14px 28px;font-size:14px">View Our Services</button>
+        </div>
+      </div>
+
     </div>
   </div>
   <div id="footer-about"></div>
@@ -1134,7 +1183,6 @@ footer{background:rgba(5,5,15,0.97);border-top:0.5px solid rgba(124,58,237,0.18)
       <div>
         <div class="footer-col-title">How We Deliver Value</div>
         <span class="footer-link" onclick="showPage('whatwedo')">AI Powered Enterprise Services</span>
-        <span class="footer-link" onclick="showPage('whatwedo')">Enterprise Service</span>
         <span class="footer-link" onclick="showPage('whatwedo')">Talent Development</span>
       </div>
       <div>

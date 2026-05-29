@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkillUp World — Links</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#07071A;
+  color:#F5F3FF;
+  font-family:'DM Sans',sans-serif;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+  overflow-x:hidden;
+}
+
+/* BACKGROUND GLOWS */
+.bg-glow-1{position:fixed;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(124,58,237,0.25) 0%,transparent 65%);pointer-events:none}
+.bg-glow-2{position:fixed;bottom:-100px;left:10%;width:300px;height:300px;background:radial-gradient(ellipse,rgba(79,70,229,0.15) 0%,transparent 70%);pointer-events:none}
+.bg-glow-3{position:fixed;bottom:-60px;right:5%;width:250px;height:250px;background:radial-gradient(ellipse,rgba(52,211,153,0.1) 0%,transparent 70%);pointer-events:none}
+
+.wrap{position:relative;z-index:1;width:100%;max-width:460px}
+
+/* ── HEADER ── */
+.header{text-align:center;margin-bottom:36px}
+.logo{width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,#7C3AED,#4F46E5);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:#fff;margin:0 auto 16px;box-shadow:0 0 40px rgba(124,58,237,0.4)}
+.brand-name{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;letter-spacing:-0.5px}
+.brand-name span{color:#A78BFA}
+.tagline{font-size:14px;color:rgba(232,228,255,0.5);margin-top:3px;font-style:italic}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(79,70,229,0.15));
+  border:0.5px solid rgba(167,139,250,0.35);
+  border-radius:20px;padding:6px 14px;
+  font-size:11px;color:#C4B5FD;margin-top:12px;font-weight:600;
+  letter-spacing:.03em;
+}
+
+/* ── WEBSITE CTA ── */
+.website-btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(135deg,#7C3AED,#4F46E5);
+  border-radius:14px;padding:16px 24px;
+  text-decoration:none;color:#fff;
+  font-size:15px;font-weight:600;
+  margin-bottom:28px;
+  box-shadow:0 8px 32px rgba(124,58,237,0.35);
+  transition:transform .2s,box-shadow .2s;
+}
+.website-btn:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(124,58,237,0.45)}
+.website-btn i{font-size:20px}
+
+/* ── SECTION LABEL ── */
+.sec-label{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(167,139,250,0.45);margin-bottom:14px;text-align:center}
+
+/* ── SOCIAL GRID ── */
+.social-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
+
+.s-card{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  border-radius:16px;padding:20px 12px;
+  text-decoration:none;color:#fff;
+  border:0.5px solid rgba(255,255,255,0.08);
+  position:relative;overflow:hidden;
+  transition:transform .2s,box-shadow .2s;
+  cursor:pointer;
+  min-height:110px;
+}
+.s-card::before{content:'';position:absolute;inset:0;opacity:0;background:rgba(255,255,255,0.06);transition:opacity .2s}
+.s-card:hover{transform:translateY(-3px)}
+.s-card:hover::before{opacity:1}
+
+.s-card .icon{font-size:28px;line-height:1}
+.s-card .platform{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:.02em}
+.s-card .handle{font-size:11px;opacity:0.65;font-weight:500}
+
+/* Platform colors */
+.s-li{background:linear-gradient(135deg,rgba(10,102,194,0.35),rgba(10,102,194,0.15));box-shadow:0 4px 24px rgba(10,102,194,0.2)}
+.s-li:hover{box-shadow:0 8px 32px rgba(10,102,194,0.35)}
+
+.s-ig{background:linear-gradient(135deg,rgba(225,48,108,0.35),rgba(193,53,132,0.2),rgba(131,58,180,0.25));box-shadow:0 4px 24px rgba(225,48,108,0.2)}
+.s-ig:hover{box-shadow:0 8px 32px rgba(225,48,108,0.35)}
+
+.s-tt{background:linear-gradient(135deg,rgba(255,255,255,0.1),rgba(254,44,85,0.2));box-shadow:0 4px 24px rgba(254,44,85,0.15)}
+.s-tt:hover{box-shadow:0 8px 32px rgba(254,44,85,0.3)}
+
+.s-yt{background:linear-gradient(135deg,rgba(255,0,0,0.3),rgba(180,0,0,0.2));box-shadow:0 4px 24px rgba(255,0,0,0.2)}
+.s-yt:hover{box-shadow:0 8px 32px rgba(255,0,0,0.35)}
+
+.s-x{background:linear-gradient(135deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05));box-shadow:0 4px 24px rgba(255,255,255,0.08)}
+.s-x:hover{box-shadow:0 8px 32px rgba(255,255,255,0.15)}
+
+.s-fb{background:linear-gradient(135deg,rgba(24,119,242,0.35),rgba(24,119,242,0.15));box-shadow:0 4px 24px rgba(24,119,242,0.2)}
+.s-fb:hover{box-shadow:0 8px 32px rgba(24,119,242,0.35)}
+
+/* ── CONTACT ROW ── */
+.contact-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:32px}
+.c-card{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  border-radius:14px;padding:16px 12px;
+  text-decoration:none;color:#fff;
+  border:0.5px solid rgba(255,255,255,0.08);
+  transition:transform .2s,background .2s;
+  min-height:80px;
+}
+.c-card:hover{transform:translateY(-2px)}
+.c-card .icon{font-size:22px}
+.c-card .platform{font-size:12px;font-weight:600}
+.c-card .handle{font-size:10px;opacity:0.6}
+.c-wa{background:linear-gradient(135deg,rgba(37,211,102,0.25),rgba(37,211,102,0.1));box-shadow:0 4px 20px rgba(37,211,102,0.15)}
+.c-wa:hover{box-shadow:0 8px 28px rgba(37,211,102,0.28)}
+.c-em{background:linear-gradient(135deg,rgba(124,58,237,0.25),rgba(79,70,229,0.15));box-shadow:0 4px 20px rgba(124,58,237,0.15)}
+.c-em:hover{box-shadow:0 8px 28px rgba(124,58,237,0.3)}
+
+/* ── FOOTER ── */
+.footer{text-align:center;font-size:11px;color:rgba(232,228,255,0.25)}
+.footer a{color:rgba(167,139,250,0.5);text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="bg-glow-1"></div>
+<div class="bg-glow-2"></div>
+<div class="bg-glow-3"></div>
+
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">SUW</div>
+    <div class="brand-name">SkillUp<span>World</span></div>
+    <div class="tagline">Built to Fit.</div>
+    <div class="badge"><i class="ti ti-sparkles"></i> AI-Enabled Digital Transformation and Talent Development</div>
+  </div>
+
+  <!-- WEBSITE -->
+  <a class="website-btn" href="https://www.skillupworld.com" target="_blank">
+    <i class="ti ti-world" style="font-size:22px;flex-shrink:0"></i>
+    <div style="display:flex;flex-direction:column;align-items:flex-start;gap:2px">
+      <span style="font-size:15px;font-weight:700;font-family:'Syne',sans-serif">Visit Our Website</span>
+      <span style="font-size:11px;opacity:0.65;font-weight:400">skillupworld.com</span>
+    </div>
+  </a>
+
+  <!-- CONTACT -->
+  <div class="sec-label">Get in touch</div>
+  <div class="contact-row">
+    <a class="c-card c-wa" href="https://wa.me/923257760002" target="_blank">
+      <i class="ti ti-brand-whatsapp icon"></i>
+      <div class="platform">WhatsApp</div>
+      <div class="handle">+92 325 7760002</div>
+    </a>
+    <a class="c-card c-em" href="mailto:info@skillupworld.com">
+      <i class="ti ti-mail icon"></i>
+      <div class="platform">Email</div>
+      <div class="handle">info@skillupworld.com</div>
+    </a>
+  </div>
+
+  <!-- SOCIAL -->
+  <div class="sec-label">Find us on social</div>
+  <div class="social-grid">
+
+    <a class="s-card s-li" href="https://www.linkedin.com/company/skillupworld" target="_blank">
+      <i class="ti ti-brand-linkedin icon"></i>
+      <div class="platform">LinkedIn</div>
+      <div class="handle">SkillUp World</div>
+    </a>
+
+    <a class="s-card s-ig" href="https://www.instagram.com/skillupworld/" target="_blank">
+      <i class="ti ti-brand-instagram icon"></i>
+      <div class="platform">Instagram</div>
+      <div class="handle">@skillupworld</div>
+    </a>
+
+    <a class="s-card s-tt" href="https://www.tiktok.com/@skillupworld" target="_blank">
+      <i class="ti ti-brand-tiktok icon"></i>
+      <div class="platform">TikTok</div>
+      <div class="handle">@skillupworld</div>
+    </a>
+
+    <a class="s-card s-yt" href="https://www.youtube.com/@skillupworld" target="_blank">
+      <i class="ti ti-brand-youtube icon"></i>
+      <div class="platform">YouTube</div>
+      <div class="handle">@skillupworld</div>
+    </a>
+
+    <a class="s-card s-x" href="https://x.com/SkillUpWorld" target="_blank">
+      <i class="ti ti-brand-x icon"></i>
+      <div class="platform">X / Twitter</div>
+      <div class="handle">@SkillUpWorld</div>
+    </a>
+
+    <a class="s-card s-fb" href="https://www.facebook.com/skillupworld" target="_blank">
+      <i class="ti ti-brand-facebook icon"></i>
+      <div class="platform">Facebook</div>
+      <div class="handle">@skillupworld</div>
+    </a>
+
+  </div>
+
+  <div class="footer">© 2026 SkillUp World · SECP Registered · <a href="https://www.skillupworld.com">skillupworld.com</a></div>
+
+</div>
+</body>
+</html>
